@@ -96,12 +96,12 @@ public class Player : Entity {
             }
 
             ///Dash
-            if (dashUnlocked && (Input.GetKeyDown(KeyCode.Space) || (!dashing && Input.GetAxis("Left Trigger") == 1)))
+            if (dashUnlocked && (Input.GetKeyDown(KeyCode.Space) || (!dashing && Input.GetAxis("Right Trigger") == 1)))
             {
                 dashing = true;
                 Dash();
             }
-            if (Input.GetAxis("Left Trigger") == 0)
+            if (Input.GetAxis("Right Trigger") == 0)
             {
                 dashing = false;
             }

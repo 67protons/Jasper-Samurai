@@ -22,7 +22,7 @@ public class PlayerAttacks : MonoBehaviour {
 
 	void Update () 
     {        
-        if (Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.Mouse0) || (!slashing && Input.GetAxis("Right Trigger") == 1))
+        if (Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.JoystickButton2))//(!slashing && Input.GetAxis("Right Trigger") == 1))
         {            
             slashing = true;            
             StopCoroutine(Slash());
@@ -32,7 +32,7 @@ public class PlayerAttacks : MonoBehaviour {
         {
             slashing = false;            
         }
-        if (Input.GetKeyDown(KeyCode.K) || Input.GetKeyDown(KeyCode.Mouse1) || Input.GetKeyDown(KeyCode.JoystickButton5))
+        if (Input.GetKeyDown(KeyCode.K) || Input.GetKeyDown(KeyCode.Mouse1) || Input.GetKeyDown(KeyCode.JoystickButton1))
         {            
             Shoot();                      
         }
