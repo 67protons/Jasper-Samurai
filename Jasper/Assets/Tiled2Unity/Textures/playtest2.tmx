@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="61" height="30" tilewidth="64" tileheight="64" nextobjectid="1">
+ <tileset firstgid="1" name="Grass" tilewidth="64" tileheight="64" tilecount="1">
+  <image source="../../Art/Tiles/Grass.png" width="64" height="64"/>
+  <tile id="0">
+   <objectgroup draworder="index">
+    <object id="0" x="-0.5" y="-0.125" width="64.625" height="64.125"/>
+   </objectgroup>
+  </tile>
+ </tileset>
+ <tileset firstgid="2" name="Soil" tilewidth="64" tileheight="64" tilecount="1">
+  <image source="../../Art/Tiles/Soil.png" width="64" height="64"/>
+  <tile id="0">
+   <objectgroup draworder="index">
+    <object id="0" x="-0.375" y="-0.125" width="64.375" height="64.25"/>
+   </objectgroup>
+  </tile>
+ </tileset>
+ <tileset firstgid="3" name="Stone_Dark" tilewidth="64" tileheight="64" tilecount="1">
+  <image source="../../Art/Tiles/StoneTexture_Darken.png" width="64" height="64"/>
+  <tile id="0">
+   <objectgroup draworder="index">
+    <object id="0" x="0.125" y="0" width="63.75" height="63.625"/>
+   </objectgroup>
+  </tile>
+ </tileset>
+ <tileset firstgid="4" name="Stone_Light" tilewidth="64" tileheight="64" tilecount="1">
+  <image source="../../Art/Tiles/StoneTexture_Light.png" width="64" height="64"/>
+  <tile id="0">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="63.75" height="63.75"/>
+   </objectgroup>
+  </tile>
+ </tileset>
+ <layer name="Tile Layer 1" width="61" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt2EEOgCAQQ1EU739mVyYsB9CYtr/JP8DLrKA1pryjmNPOYk7DjBmzzzBjxuwzzJgx+yzJ/LwRk8xVq4N59r4O5lmrsnn1vsrmVauiefe+iuZdq4p5/KNNMb/lHKv+g//VF+bErsB6YDfw+QTT
+  </data>
+ </layer>
+</map>
