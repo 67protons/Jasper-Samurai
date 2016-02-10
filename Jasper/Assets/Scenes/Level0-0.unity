@@ -189,7 +189,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 6194206, guid: 5abecb9980c1b5e4c8873dda14dcdfe5, type: 2}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6194206, guid: 5abecb9980c1b5e4c8873dda14dcdfe5, type: 2}
       propertyPath: m_Size.x
@@ -377,7 +377,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 6194206, guid: 5abecb9980c1b5e4c8873dda14dcdfe5, type: 2}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6194206, guid: 5abecb9980c1b5e4c8873dda14dcdfe5, type: 2}
       propertyPath: m_Size.x
@@ -456,7 +456,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 6194206, guid: 5abecb9980c1b5e4c8873dda14dcdfe5, type: 2}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6194206, guid: 5abecb9980c1b5e4c8873dda14dcdfe5, type: 2}
       propertyPath: m_Size.x
@@ -4139,7 +4139,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 6194206, guid: 5abecb9980c1b5e4c8873dda14dcdfe5, type: 2}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6194206, guid: 5abecb9980c1b5e4c8873dda14dcdfe5, type: 2}
       propertyPath: m_Size.x
