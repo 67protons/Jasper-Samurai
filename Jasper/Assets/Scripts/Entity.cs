@@ -16,14 +16,12 @@ public class Entity : MonoBehaviour {
          
     protected Vector2 stationarySpeed = new Vector2(0f, 0f);
 
-    private SpriteRenderer sprite;
-    private Transform healthBar;
+    private SpriteRenderer sprite;    
 
     public virtual void Awake()
     {
         currentHealth = maxHealth;        
-        sprite = this.GetComponent<SpriteRenderer>();
-        healthBar = this.transform.FindChild("HealthBar").FindChild("Bar");
+        sprite = this.GetComponent<SpriteRenderer>();        
     }
 
     public virtual void Update()
@@ -33,10 +31,7 @@ public class Entity : MonoBehaviour {
 
     private void ManageState()
     {
-        if (healthBar != null)
-        {
-            healthBar.localScale = new Vector3(currentHealth / maxHealth, 1, 1);
-        }        
+            
         if (sprite != null)
         {
             if (currentDirection == Direction.Left)

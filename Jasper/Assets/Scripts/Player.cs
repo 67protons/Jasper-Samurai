@@ -49,7 +49,7 @@ public class Player : Entity {
 
         if (hitObject.CompareTag("Enemy"))
         {
-            Debug.Log("Ouch");
+            //Debug.Log("Ouch");
             //TODO : hitObject.GetComponent<EnemyController>().DealDamage();
         }
 

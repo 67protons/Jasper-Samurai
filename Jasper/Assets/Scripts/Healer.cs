@@ -11,20 +11,26 @@ public class Healer : MonoBehaviour {
         {
             Destroy(this.gameObject);
         }
-        DisplayRemainingHealth();
+        //DisplayRemainingHealth();
 	}
 
     void OnTriggerStay2D(Collider2D hitObject)
     {
+        Debug.Log("Healing");
         if (hitObject.CompareTag("Player"))
         {
-            PlayerState player = hitObject.GetComponent<PlayerState>();
+            Player player = hitObject.GetComponent<Player>();
             if (player.currentHealth < player.maxHealth)
             {
                 player.currentHealth += healthPerSec * Time.deltaTime;
                 remainingHealth -= healthPerSec * Time.deltaTime;
             }                
         }
+    }
+
+    void OnTriggerExit2D(Collider2D hitObject)
+    {
+        Debug.Log("Leaving");
     }
 
     private void DisplayRemainingHealth()

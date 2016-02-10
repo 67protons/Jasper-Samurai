@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class RolyPoly : Entity {
+public class RolyPoly : Enemy {
 
     public float damage = 10;
 
