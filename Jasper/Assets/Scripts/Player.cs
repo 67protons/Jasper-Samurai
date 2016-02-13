@@ -22,7 +22,7 @@ public class Player : Entity {
     public bool chargeJumpUnlocked = true;
     public float chargeJumpMultiplier = 100f;
     public float chargeCostPerSec = 40f;
-    private float chargeJumpPotential = 0f;
+    private float chargeJumpPotential;
     private bool charging = false;  // Prevent other movement while charging.
 
     public Animator playerAnimator;
@@ -38,6 +38,8 @@ public class Player : Entity {
         meleeManager = transform.FindChild("MeleeCollider").GetComponent<PlayerMeleeManager>();
         feet = transform.FindChild("FeetCollider").GetComponent<PlayerFeetCollision>();
         Physics2D.IgnoreCollision(feet.GetComponent<Collider2D>(), meleeManager.GetComponent<Collider2D>());
+
+        //chargeJumpPotential = jumpForce;
     }
 
     void OnTriggerEnter2D(Collider2D hitObject)
@@ -111,7 +113,7 @@ public class Player : Entity {
         ///Charge Jump
         if (chargeJumpUnlocked && (Input.GetKey(KeyCode.I) || Input.GetKey(KeyCode.Mouse2) || Input.GetKey(KeyCode.JoystickButton3)))
         {
-            BeginChargeJump();
+            Charge();
         }
         if (Input.GetKeyUp(KeyCode.I) || Input.GetKeyUp(KeyCode.Mouse2) || Input.GetKeyUp(KeyCode.JoystickButton3))
         {
@@ -134,6 +136,28 @@ public class Player : Entity {
             meleeManager.transform.localScale = Vector3.left;
         else
             meleeManager.transform.localScale = Vector3.right;
+
+        ///Play proper player animations for jumping, falling, and landing
+        Debug.Log(this.GetComponent<Rigidbody2D>().velocity.y);
+        if (!playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("slashing"))
+        {
+            if (this.GetComponent<Rigidbody2D>().velocity.y > 0)
+            {
+                playerAnimator.Play("jumping");
+            }
+            else if (this.GetComponent<Rigidbody2D>().velocity.y < 0)
+            {
+                playerAnimator.Play("falling");
+            }
+            if ((playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("falling") ||
+                playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("jumping")) && feet.isGrounded)
+            {
+                playerAnimator.Play("land");
+            }
+        }
+        
+        //playerAnimator.SetFloat("yVelocity", this.GetComponent<Rigidbody2D>().velocity.y);
+        //playerAnimator.SetBool("grounded", feet.isGrounded);
     }    
 
     private void Jump()
@@ -168,20 +192,26 @@ public class Player : Entity {
         this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
     }
 
-    private void BeginChargeJump()
+    private void Charge()
     {
         if (feet.isGrounded && currentSpirit > 0)
         {
+            playerAnimator.SetBool("charging", true);
             charging = true;
             currentSpirit -= chargeCostPerSec * Time.deltaTime;
-            chargeJumpPotential += chargeCostPerSec * Time.deltaTime;
+            if (chargeJumpPotential < jumpForce)
+                chargeJumpPotential = jumpForce;
+            chargeJumpPotential += chargeJumpMultiplier * Time.deltaTime;
         }
     }
 
     private void ChargeJump()
     {
-        GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, (float)Math.Sqrt(chargeJumpPotential) * chargeJumpMultiplier));
-        chargeJumpPotential = 0f;
+        playerAnimator.SetBool("charging", false);
+        //GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, (float)Math.Sqrt(chargeJumpPotential) * chargeJumpMultiplier));
+        Debug.Log(chargeJumpPotential);
+        GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, chargeJumpPotential));
+        chargeJumpPotential = 0;
         charging = false;
     }
 
