@@ -4,13 +4,13 @@
   <image source="../../Art/Tiles/image.png" width="1024" height="1024"/>
   <tile id="2">
    <objectgroup draworder="index">
-    <object id="0" x="-0.875" y="-0.75" width="65.375" height="65.25"/>
+    <object id="0" x="0" y="0" width="64" height="64"/>
    </objectgroup>
   </tile>
   <tile id="3">
    <objectgroup draworder="index">
-    <object id="0" x="-0.625" y="-0.5" width="65" height="64.875"/>
     <object id="0" x="42" y="34" width="6"/>
+    <object id="0" x="0" y="0" width="64" height="64"/>
    </objectgroup>
   </tile>
   <tile id="21">
@@ -20,14 +20,13 @@
   </tile>
   <tile id="52">
    <objectgroup draworder="index">
-    <object id="0" x="-2" y="-4" width="66" height="70"/>
-    <object id="0" x="-3" y="-1" width="35" height="18"/>
     <object id="0" x="25" y="14" width="1"/>
+    <object id="0" x="0" y="0" width="64" height="64"/>
    </objectgroup>
   </tile>
   <tile id="83">
    <objectgroup draworder="index">
-    <object id="0" x="1" y="-2" width="60" height="66"/>
+    <object id="0" x="0" y="0" width="64" height="64"/>
    </objectgroup>
   </tile>
  </tileset>
