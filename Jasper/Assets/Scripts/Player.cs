@@ -10,7 +10,11 @@ public class Player : Entity {
     public float currentSpirit;
     public float spiritRegenPerSec = 5f;
     public float jumpForce = 500f;
-    private bool ducking = false;
+    [HideInInspector]
+    public bool ducking;
+    [HideInInspector]
+    public bool smashing;
+    private bool movingLeft = false, movingRight = false;
 
     ///Dash Ability
     public bool dashUnlocked = true;
@@ -38,7 +42,10 @@ public class Player : Entity {
         playerAnimator = GetComponent<Animator>();
         meleeManager = transform.FindChild("MeleeCollider").GetComponent<PlayerMeleeManager>();
         feet = transform.FindChild("FeetCollider").GetComponent<PlayerFeetCollision>();
-        Physics2D.IgnoreCollision(feet.GetComponent<Collider2D>(), meleeManager.GetComponent<Collider2D>());        
+        Physics2D.IgnoreCollision(feet.GetComponent<Collider2D>(), meleeManager.GetComponent<Collider2D>());
+
+        ducking = false;
+        smashing = false;
     }
 
     void OnTriggerEnter2D(Collider2D hitObject)
@@ -70,28 +77,33 @@ public class Player : Entity {
         if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("D-Pad X Axis") == 0)
         {
             playerAnimator.SetBool("walking", false);
+            movingLeft = false;
+            movingRight = false;
         }
         else
         {
             ///Move Left
             if (Input.GetAxis("Horizontal") < 0 || Input.GetAxis("D-Pad X Axis") < 0)
             {
-                Move(Direction.Left);
-                playerAnimator.SetBool("walking", true);
+                movingLeft = true;
+                movingRight = false;
             }
 
             ///Move Right
             if (Input.GetAxis("Horizontal") > 0 || Input.GetAxis("D-Pad X Axis") > 0)
             {
-                Move(Direction.Right);
-                playerAnimator.SetBool("walking", true);
+                movingRight = true;
+                movingLeft = false;
             }        
         }
 
         if (Input.GetKeyDown(KeyCode.S))
         {
             // TODO : Only duck when grounded. If in the air, do a down-smash...... unless we downsmash by melee attacking
-            Duck();
+            if (feet.isGrounded)
+                Duck();
+            else
+                Smash();
         }
         if (Input.GetKeyUp(KeyCode.S))
         {
@@ -130,6 +142,20 @@ public class Player : Entity {
         }
     }
 
+    void FixedUpdate()
+    {
+        if (movingLeft)
+        {
+            Move(Direction.Left);
+            playerAnimator.SetBool("walking", true);
+        }
+        if (movingRight)
+        {
+            Move(Direction.Right);
+            playerAnimator.SetBool("walking", true);
+        }
+    }
+
     /* Helper state management functions below */
 
     private void SpiritRegen()
@@ -163,6 +189,12 @@ public class Player : Entity {
             meleeManager.transform.localScale = Vector3.left;
         else
             meleeManager.transform.localScale = Vector3.right;
+
+        ///
+        if (feet.isGrounded)
+        {
+            smashing = false;
+        }
 
         ///Play proper player animations for ducking, jumping, falling, and landing
         if (ducking)
@@ -201,13 +233,21 @@ public class Player : Entity {
 
     private void StandUp()
     {
-        ducking = false;
-        moveSpeed *= 2;
-        BoxCollider2D playerCollider = this.GetComponent<BoxCollider2D>();
-        Vector2 smallSize = playerCollider.size;
-        playerCollider.size = new Vector2(smallSize.x, smallSize.y * 2);
-        playerCollider.offset += new Vector2(0, smallSize.y / 2);
-        playerAnimator.SetBool("ducking", false);
+        if (ducking)
+        {
+            ducking = false;
+            moveSpeed *= 2;
+            BoxCollider2D playerCollider = this.GetComponent<BoxCollider2D>();
+            Vector2 smallSize = playerCollider.size;
+            playerCollider.size = new Vector2(smallSize.x, smallSize.y * 2);
+            playerCollider.offset += new Vector2(0, smallSize.y / 2);
+            playerAnimator.SetBool("ducking", false);
+        }        
+    }
+
+    private void Smash()
+    {
+        smashing = true;
     }
 
     private void Jump()
