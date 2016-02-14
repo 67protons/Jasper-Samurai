@@ -9,7 +9,8 @@ public class Player : Entity {
     [HideInInspector]
     public float currentSpirit;
     public float spiritRegenPerSec = 5f;
-    public float jumpForce = 500f;       
+    public float jumpForce = 500f;
+    private bool ducking = false;
 
     ///Dash Ability
     public bool dashUnlocked = true;
@@ -37,9 +38,7 @@ public class Player : Entity {
         playerAnimator = GetComponent<Animator>();
         meleeManager = transform.FindChild("MeleeCollider").GetComponent<PlayerMeleeManager>();
         feet = transform.FindChild("FeetCollider").GetComponent<PlayerFeetCollision>();
-        Physics2D.IgnoreCollision(feet.GetComponent<Collider2D>(), meleeManager.GetComponent<Collider2D>());
-
-        //chargeJumpPotential = jumpForce;
+        Physics2D.IgnoreCollision(feet.GetComponent<Collider2D>(), meleeManager.GetComponent<Collider2D>());        
     }
 
     void OnTriggerEnter2D(Collider2D hitObject)
@@ -89,6 +88,16 @@ public class Player : Entity {
             }        
         }
 
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            // TODO : Only duck when grounded. If in the air, do a down-smash...... unless we downsmash by melee attacking
+            Duck();
+        }
+        if (Input.GetKeyUp(KeyCode.S))
+        {
+            StandUp();
+        }
+
         if (!charging)  //Prevent these methods of movement while charging for ChargeJump
         {           
             ///Jump
@@ -121,6 +130,24 @@ public class Player : Entity {
         }
     }
 
+    /* Helper state management functions below */
+
+    private void SpiritRegen()
+    {
+        if (currentSpirit <= maxSpirit)
+        {
+            currentSpirit += spiritRegenPerSec * Time.deltaTime;
+        }
+    }
+
+    private void Respawn()
+    {
+        currentHealth = maxHealth;
+        currentSpirit = maxSpirit;
+        Vector2 spawnPoint = currentCheckpoint.transform.FindChild("Respawn Location").position;
+        this.transform.position = spawnPoint;
+    }
+
     private void ManageState()
     {
         ///Respawn on Death
@@ -137,9 +164,11 @@ public class Player : Entity {
         else
             meleeManager.transform.localScale = Vector3.right;
 
-        ///Play proper player animations for jumping, falling, and landing
-        Debug.Log(this.GetComponent<Rigidbody2D>().velocity.y);
-        if (!playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("slashing"))
+        ///Play proper player animations for ducking, jumping, falling, and landing
+        if (ducking)
+            playerAnimator.Play("ducking");
+        if (!playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("slashing") &&
+            !playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("ducking"))
         {
             if (this.GetComponent<Rigidbody2D>().velocity.y > 0)
             {
@@ -154,11 +183,32 @@ public class Player : Entity {
             {
                 playerAnimator.Play("land");
             }
-        }
-        
-        //playerAnimator.SetFloat("yVelocity", this.GetComponent<Rigidbody2D>().velocity.y);
-        //playerAnimator.SetBool("grounded", feet.isGrounded);
-    }    
+        }               
+    }
+
+
+    /* Movement helper functions below */
+    private void Duck()
+    {
+        ducking = true;
+        moveSpeed /= 2;
+        BoxCollider2D playerCollider = this.GetComponent<BoxCollider2D>();
+        Vector2 normalSize = playerCollider.size;
+        playerCollider.size = new Vector2(normalSize.x, normalSize.y / 2);
+        playerCollider.offset -= new Vector2(0, normalSize.y / 4);
+        playerAnimator.SetBool("ducking", true);
+    }
+
+    private void StandUp()
+    {
+        ducking = false;
+        moveSpeed *= 2;
+        BoxCollider2D playerCollider = this.GetComponent<BoxCollider2D>();
+        Vector2 smallSize = playerCollider.size;
+        playerCollider.size = new Vector2(smallSize.x, smallSize.y * 2);
+        playerCollider.offset += new Vector2(0, smallSize.y / 2);
+        playerAnimator.SetBool("ducking", false);
+    }
 
     private void Jump()
     {
@@ -208,27 +258,10 @@ public class Player : Entity {
     private void ChargeJump()
     {
         playerAnimator.SetBool("charging", false);
-        //GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, (float)Math.Sqrt(chargeJumpPotential) * chargeJumpMultiplier));
-        Debug.Log(chargeJumpPotential);
+        //GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, (float)Math.Sqrt(chargeJumpPotential) * chargeJumpMultiplier));        
         GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, chargeJumpPotential));
         chargeJumpPotential = 0;
         charging = false;
-    }
-
-    private void SpiritRegen()
-    {
-        if (currentSpirit <= maxSpirit)
-        {
-            currentSpirit += spiritRegenPerSec * Time.deltaTime;
-        }
-    }
-
-    private void Respawn()
-    {
-        currentHealth = maxHealth;
-        currentSpirit = maxSpirit;
-        Vector2 spawnPoint = currentCheckpoint.transform.FindChild("Respawn Location").position;
-        this.transform.position = spawnPoint;
     }
 }
 
