@@ -18,6 +18,11 @@
     <object id="0" x="-2" y="-2" width="66" height="66"/>
    </objectgroup>
   </tile>
+  <tile id="36">
+   <objectgroup draworder="index">
+    <object id="0" x="0" y="0" width="64" height="64"/>
+   </objectgroup>
+  </tile>
   <tile id="52">
    <objectgroup draworder="index">
     <object id="0" x="25" y="14" width="1"/>
@@ -31,16 +36,6 @@
  <layer name="Tile Layer 1" width="1" height="1">
   <data encoding="base64" compression="zlib">
    eJxTZWBgAAAAmAAm
-  </data>
- </layer>
- <layer name="Copy of Tile Layer 1" width="1" height="1" visible="0">
-  <data encoding="base64" compression="zlib">
-   eJxjYGBgAAAABAAB
-  </data>
- </layer>
- <layer name="Tile Layer 2" width="1" height="1" visible="0">
-  <data encoding="base64" compression="zlib">
-   eJxjYGBgAAAABAAB
   </data>
  </layer>
 </map>

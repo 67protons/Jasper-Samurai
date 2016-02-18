@@ -1,12 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <!--Tiled2Unity generated xml data-->
 <!--Do not modify by hand-->
-<!--Last exported: 2/17/2016 4:09:58 PM-->
+<!--Last exported: 2/17/2016 4:12:19 PM-->
 <Tiled2Unity version="0.9.13.1">
   <AssignMaterial mesh="mesh_[00]_[00]" material="image" sortingLayerName="" sortingOrder="0" />
   <Prefab name="Breakable Block" numTilesWide="1" numTilesHigh="1" tileWidth="64" tileHeight="64" exportScale="0.02" mapWidthInPixels="64" mapHeightInPixels="64">
     <GameObject name="Tile_Layer_1_00" x="0" y="0">
       <GameObject copy="mesh_[00]_[00]" opacity="1" />
+      <GameObject name="Collision">
+        <PolygonCollider2D>
+          <Path>1.28,0 0,0 0,-1.28 1.28,-1.28</Path>
+        </PolygonCollider2D>
+      </GameObject>
     </GameObject>
   </Prefab>
   <ImportMesh filename="Breakable Block.obj">IyBXYXZlZnJvbnQgT0JKIGZpbGUgYXV0b21hdGljYWxseSBnZW5lcmF0ZWQgYnkgVGlsZWQyVW5pdHkNCg0KIyBWZXJ0aWNlcyAoQ291bnQgPSA0KQ0KdiAwIC0xLjI3OTk5OTk3MTM4OTc3IDANCnYgLTEuMjc5OTk5OTcxMzg5NzcgLTEuMjc5OTk5OTcxMzg5NzcgMA0KdiAtMS4yNzk5OTk5NzEzODk3NyAwIDANCnYgMCAwIDANCg0KIyBUZXh0dXJlIENvb3JpbmRhdGVzIChDb3VudCA9IDQpDQp2dCAwLjI1MDEyMjEgMC44MTI2MjIxDQp2dCAwLjMxMjM3NzkgMC44MTI2MjIxDQp2dCAwLjMxMjM3NzkgMC44NzQ4Nzc5DQp2dCAwLjI1MDEyMjEgMC44NzQ4Nzc5DQoNCiMgTm9ybWFsDQp2biAwIDAgLTENCg0KIyBHcm91cHMgKENvdW50ID0gMSkNCmcgbWVzaF9bMDBdX1swMF0NCmYgIDEvMS8xICAyLzIvMSAgMy8zLzEgIDQvNC8xIA0K</ImportMesh>
