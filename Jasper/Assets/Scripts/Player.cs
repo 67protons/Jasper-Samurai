@@ -247,7 +247,7 @@ public class Player : Entity {
 
     private void Smash()
     {
-        smashing = true;        
+        smashing = true;
         this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -2000));
     }
 
