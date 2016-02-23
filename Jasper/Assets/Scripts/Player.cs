@@ -97,15 +97,15 @@ public class Player : Entity {
             }        
         }
 
-        if (Input.GetKeyDown(KeyCode.S))
+        if (!ducking && (Input.GetAxis("Vertical") < 0 || Input.GetAxis("D-Pad Y Axis") < 0))
         {
-            // TODO : Only duck when grounded. If in the air, do a down-smash...... unless we downsmash by melee attacking
+            
             if (feet.isGrounded)
                 Duck();
             else
                 Smash();
         }
-        if (Input.GetKeyUp(KeyCode.S))
+        if (Input.GetAxis("Vertical") == 0 && Input.GetAxis("D-Pad Y Axis") == 0)
         {
             StandUp();
         }
