@@ -21,7 +21,7 @@ public class Player : Entity {
     public float dashForce = 800f;
     public float dashDuration = .4f;
     public float dashCost = 20f;
-    private bool dashing = false;   //For controller support because Left Trigger is an axis
+    public bool dashing = false;   //For controller support because Left Trigger is an axis
 
     ///Charge Jump Ability
     public bool chargeJumpUnlocked = true;
@@ -121,12 +121,12 @@ public class Player : Entity {
             ///Dash
             if (dashUnlocked && (Input.GetKeyDown(KeyCode.Space) || (!dashing && Input.GetAxis("Right Trigger") == 1)))
             {
-                dashing = true;
+                //dashing = true;
                 Dash();
             }
             if (Input.GetAxis("Right Trigger") == 0)
             {
-                dashing = false;
+                //dashing = false;
             }
         }
 
@@ -262,7 +262,7 @@ public class Player : Entity {
     private void Dash()
     {
         if (currentSpirit > dashCost)
-        {
+        {            
             currentSpirit -= dashCost;
             StopCoroutine(DashCoroutine());
             StartCoroutine(DashCoroutine());
@@ -271,6 +271,7 @@ public class Player : Entity {
 
     private IEnumerator DashCoroutine()
     {
+        dashing = true;
         if (currentDirection == Direction.Right)
         {
             this.GetComponent<Rigidbody2D>().AddForce(new Vector2(dashForce, 0f));
@@ -281,6 +282,7 @@ public class Player : Entity {
         }
         yield return new WaitForSeconds(dashDuration);
         this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        dashing = false;
     }
 
     private void Charge()
