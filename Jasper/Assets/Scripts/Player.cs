@@ -184,12 +184,6 @@ public class Player : Entity {
         if (!charging)            
             SpiritRegen();
 
-        ///Flip Melee Collider
-        if (currentDirection == Direction.Left)
-            meleeManager.transform.localScale = Vector3.left;
-        else
-            meleeManager.transform.localScale = Vector3.right;
-
         ///
         if (feet.isGrounded)
         {

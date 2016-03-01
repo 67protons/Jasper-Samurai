@@ -54,14 +54,6 @@ public class PlayerMeleeManager : MonoBehaviour {
             if (player.dashing)
             {
                 Destroy(hitObject.transform.parent.parent.gameObject);
-                //Collider2D[] hits = Physics2D.OverlapCircleAll((Vector2)this.transform.position + this.GetComponent<CircleCollider2D>().offset, .4f);
-                //foreach (Collider2D hit in hits)
-                //{
-                //    if (hit.CompareTag("Dashable"))
-                //    {
-                //        Destroy(hit.transform.parent.parent.gameObject);
-                //    }
-                //}
             }            
         }
     }

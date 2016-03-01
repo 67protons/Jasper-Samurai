@@ -30,15 +30,11 @@ public class Entity : MonoBehaviour {
     }
 
     private void ManageState()
-    {
-            
-        if (sprite != null)
-        {
-            if (currentDirection == Direction.Left)
-                sprite.flipX = true;
-            else
-                sprite.flipX = false;
-        }
+    {                
+        if (currentDirection == Direction.Left)
+            this.transform.localScale = new Vector3(-1, 1, 1);            
+        else
+            this.transform.localScale = new Vector3(1, 1, 1);                
     }
 
     public void Move(Direction directionToMove)
