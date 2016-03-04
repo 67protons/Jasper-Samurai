@@ -193,7 +193,8 @@ public class Player : Entity {
         ///Play proper player animations for ducking, jumping, falling, and landing
         if (ducking && !playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("duckWalking"))
             playerAnimator.Play("ducking");
-        if (!playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("slashing") &&
+        if (!playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("dashing") &&
+            !playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("slashing") &&
             !playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("ducking"))
         {
             if (this.GetComponent<Rigidbody2D>().velocity.y > 0)
@@ -255,9 +256,10 @@ public class Player : Entity {
 
     private void Dash()
     {
-        if (currentSpirit > dashCost)
+        if (currentSpirit > dashCost && !ducking)
         {            
             currentSpirit -= dashCost;
+            playerAnimator.Play("dashing");
             StopCoroutine(DashCoroutine());
             StartCoroutine(DashCoroutine());
         }
