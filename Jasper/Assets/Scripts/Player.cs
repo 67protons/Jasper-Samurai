@@ -191,7 +191,7 @@ public class Player : Entity {
         }
 
         ///Play proper player animations for ducking, jumping, falling, and landing
-        if (ducking)
+        if (ducking && !playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("duckWalking"))
             playerAnimator.Play("ducking");
         if (!playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("slashing") &&
             !playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("ducking"))
