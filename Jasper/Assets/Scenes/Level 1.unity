@@ -3827,7 +3827,7 @@ MonoBehaviour:
   dashing: 0
   chargeJumpUnlocked: 1
   chargeJumpMultiplier: 200
-  chargeCostPerSec: 20
+  chargeCostPerSec: 40
   playerAnimator: {fileID: 0}
 --- !u!1 &1416802877
 GameObject:
