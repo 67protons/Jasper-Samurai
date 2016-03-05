@@ -32,7 +32,9 @@ public class RolyPoly : Enemy {
     {
         if (hitObject.CompareTag("Player"))
         {
-            this.DealDamage(hitObject.GetComponent<Entity>(), damage);
+            Entity playerEntity = hitObject.GetComponent<Entity>();
+            if (playerEntity.damageable)
+                this.DealDamage(playerEntity, damage);
         }
         else if (hitObject.CompareTag("Terrain") || hitObject.CompareTag("Breakable"))
         {            

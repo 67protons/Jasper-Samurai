@@ -11,6 +11,7 @@ public class Entity : MonoBehaviour {
     public float maxHealth = 100f;
     [HideInInspector]
     public float currentHealth;
+    public bool damageable = true;
 
     public Vector2 moveSpeed;
          

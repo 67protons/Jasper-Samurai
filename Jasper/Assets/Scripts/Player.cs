@@ -58,7 +58,10 @@ public class Player : Entity {
 
         if (hitObject.CompareTag("Enemy"))
         {
-            //Debug.Log("Ouch");
+            if (dashing)
+            {
+                DealDamage(hitObject.GetComponent<Entity>(), 100);
+            }                
             //TODO : hitObject.GetComponent<EnemyController>().DealDamage();
         }
 
@@ -96,9 +99,8 @@ public class Player : Entity {
                 movingRight = true;
                 movingLeft = false;
             }        
-        }
-
-        if (!ducking && (Input.GetAxis("Vertical") < 0 || Input.GetAxis("D-Pad Y Axis") < 0))
+        }        
+        if (!ducking && (Input.GetAxis("Vertical") < -0.5 || Input.GetAxis("D-Pad Y Axis") < -0.5))
         {
             
             if (feet.isGrounded)
@@ -182,7 +184,7 @@ public class Player : Entity {
             Respawn();
 
         ///Recharge Spirit
-        if (!charging)            
+        if (!charging)
             SpiritRegen();
 
         ///
@@ -191,18 +193,22 @@ public class Player : Entity {
             smashing = false;
         }
 
+        ///Make player invulnerable when dashing
+        damageable = !dashing;        
+
         ///Play proper player animations for ducking, jumping, falling, and landing
         if (ducking && !playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("duckWalking"))
             playerAnimator.Play("ducking");
         if (!playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("dashing") &&
             !playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("slashing") &&
             !playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("ducking"))
-        {            
-            if (this.GetComponent<Rigidbody2D>().velocity.y > 0.5)
+        {
+            //Debug.Log(this.GetComponent<Rigidbody2D>().velocity.y);
+            if (this.GetComponent<Rigidbody2D>().velocity.y > 2)
             {
                 playerAnimator.Play("jumping");
             }
-            else if (this.GetComponent<Rigidbody2D>().velocity.y < -0.5)
+            else if (this.GetComponent<Rigidbody2D>().velocity.y < -2)
             {
                 playerAnimator.Play("falling");
             }
@@ -278,7 +284,7 @@ public class Player : Entity {
             this.GetComponent<Rigidbody2D>().AddForce(new Vector2(-dashForce, 0f));
         }
         yield return new WaitForSeconds(dashDuration);
-        this.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        this.GetComponent<Rigidbody2D>().velocity = new Vector2(0, this.GetComponent<Rigidbody2D>().velocity.y);//Vector2.zero;
         dashing = false;
     }
 

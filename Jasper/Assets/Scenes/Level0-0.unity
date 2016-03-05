@@ -1526,7 +1526,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 632990546}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 150.84, y: 9.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1416802878}
@@ -2494,6 +2494,10 @@ Prefab:
       propertyPath: m_TagString
       value: Terrain
       objectReference: {fileID: 0}
+    - target: {fileID: 167202, guid: 97bd35bc386f6c944af63645250d1e17, type: 2}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 97bd35bc386f6c944af63645250d1e17, type: 2}
   m_IsPrefabParent: 0
@@ -3295,6 +3299,7 @@ MonoBehaviour:
   currentDirection: 0
   maxHealth: 100
   currentHealth: 0
+  damageable: 1
   moveSpeed: {x: 6.5, y: 6.5}
   currentCheckpoint: {fileID: 0}
   maxSpirit: 100
@@ -3306,7 +3311,7 @@ MonoBehaviour:
   dashUnlocked: 1
   dashForce: 800
   dashDuration: 0.4
-  dashCost: 20
+  dashCost: 0
   dashing: 0
   chargeJumpUnlocked: 1
   chargeJumpMultiplier: 200

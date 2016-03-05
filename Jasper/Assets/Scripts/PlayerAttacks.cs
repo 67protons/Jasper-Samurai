@@ -9,13 +9,13 @@ public class PlayerAttacks : MonoBehaviour {
     public float projectileForce = 400f;
     public float projectileCost = 5f;
 
-    private Player state;
+    private Player player;
     private List<GameObject> enemiesInMeleeRange = new List<GameObject>();
     private bool slashing = false;  //For controller support because Right Trigger is an axis
 
     void Start()
     {        
-        state = this.GetComponent<Player>();        
+        player = this.GetComponent<Player>();        
 
         enemiesInMeleeRange = transform.GetComponentInChildren<PlayerMeleeManager>().enemiesInMeleeRange;
     }
@@ -40,25 +40,25 @@ public class PlayerAttacks : MonoBehaviour {
 
     private IEnumerator Slash()
     {        
-        state.playerAnimator.Play("slashing");
+        player.playerAnimator.Play("slashing");
         yield return new WaitForSeconds(.25f);
         foreach (GameObject enemy in enemiesInMeleeRange){            
-            state.DealDamage(enemy.GetComponent<Entity>(), 100);
+            player.DealDamage(enemy.GetComponent<Entity>(), 100);
         }        
     }
 
     private void Shoot()
     {
-        if (state.currentSpirit > projectileCost)
+        if (player.currentSpirit > projectileCost)
         {
             GameObject projectile = (GameObject)Instantiate(projectilePrefab, transform.position, Quaternion.identity);
 
-            projectile.GetComponent<ProjectileManager>().Initialize(this.tag, state.currentDirection, projectileDamage, projectileForce);
+            projectile.GetComponent<ProjectileManager>().Initialize(this.tag, player.currentDirection, projectileDamage, projectileForce);
 
             Physics2D.IgnoreCollision(projectile.GetComponent<Collider2D>(), this.GetComponent<Collider2D>());
             Physics2D.IgnoreCollision(projectile.GetComponent<Collider2D>(), transform.FindChild("MeleeCollider").GetComponent<Collider2D>());
 
-            state.currentSpirit -= projectileCost;
+            player.currentSpirit -= projectileCost;
         }
     }
 }
