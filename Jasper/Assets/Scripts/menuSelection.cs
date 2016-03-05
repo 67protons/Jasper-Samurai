@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class menuSelection : MonoBehaviour 
 {
@@ -38,8 +39,8 @@ public class menuSelection : MonoBehaviour
     }
 
     public void startGame()
-    {
-        Application.LoadLevel("Level0-0");
+    {        
+        SceneManager.LoadScene(1);
     }
 
     public void exitGame()

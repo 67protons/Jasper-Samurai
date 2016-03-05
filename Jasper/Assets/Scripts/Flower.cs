@@ -42,12 +42,7 @@ public class Flower : MonoBehaviour {
                     break;
             }
         }
-    }
-
-    void OnTriggerExit2D(Collider2D hitObject)
-    {
-        Debug.Log("Leaving");
-    }
+    }    
 
     private void DisplayRemainingHealth()
     {

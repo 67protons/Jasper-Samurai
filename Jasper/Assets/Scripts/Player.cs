@@ -35,6 +35,8 @@ public class Player : Entity {
     PlayerMeleeManager meleeManager;
     PlayerFeetCollision feet;
 
+    ParticleSystem particleSystem;
+
     public override void Awake()
     {
         base.Awake();
@@ -47,6 +49,9 @@ public class Player : Entity {
 
         ducking = false;
         smashing = false;
+
+        particleSystem = this.transform.FindChild("ParticleSystem").GetComponent<ParticleSystem>();
+        particleSystem.enableEmission = false;
     }
 
     void OnTriggerEnter2D(Collider2D hitObject)
@@ -297,11 +302,15 @@ public class Player : Entity {
             if (chargeJumpPotential < jumpForce)
                 chargeJumpPotential = jumpForce;
             chargeJumpPotential += chargeJumpMultiplier * Time.deltaTime;
+
+            particleSystem.enableEmission = true;            
+            particleSystem.startLifetime = chargeJumpPotential/700;
         }
     }
 
     private void ChargeJump()
     {
+        particleSystem.enableEmission = false;
         playerAnimator.SetBool("charging", false);        
         GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, chargeJumpPotential));
         chargeJumpPotential = 0;
