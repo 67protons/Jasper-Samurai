@@ -100,9 +100,8 @@ public class Player : Entity {
                 movingLeft = false;
             }        
         }        
-        if (!ducking && (Input.GetAxis("Vertical") < -0.5 || Input.GetAxis("D-Pad Y Axis") < -0.5))
-        {
-            
+        if (!ducking && (Input.GetKeyDown(KeyCode.S) || Input.GetAxis("Vertical") < -0.5 || Input.GetAxis("D-Pad Y Axis") < -0.5))
+        {            
             if (feet.isGrounded)
                 Duck();
             else
@@ -284,7 +283,7 @@ public class Player : Entity {
             this.GetComponent<Rigidbody2D>().AddForce(new Vector2(-dashForce, 0f));
         }
         yield return new WaitForSeconds(dashDuration);
-        this.GetComponent<Rigidbody2D>().velocity = new Vector2(0, this.GetComponent<Rigidbody2D>().velocity.y);//Vector2.zero;
+        this.GetComponent<Rigidbody2D>().velocity = new Vector2(0, this.GetComponent<Rigidbody2D>().velocity.y);
         dashing = false;
     }
 
