@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="300" height="400" tilewidth="64" tileheight="64" nextobjectid="1">
+ <tileset firstgid="1" name="image" tilewidth="64" tileheight="64" tilecount="256" columns="16">
+  <image source="../../Art/Tiles/image.png" width="1024" height="1024"/>
+  <tile id="1">
+   <objectgroup draworder="index">
+    <object id="0" x="-1" y="-1" width="64" height="66"/>
+   </objectgroup>
+  </tile>
+  <tile id="2">
+   <objectgroup draworder="index">
+    <object id="0" x="-0.875" y="-0.75" width="65.375" height="65.25"/>
+   </objectgroup>
+  </tile>
+  <tile id="3">
+   <objectgroup draworder="index">
+    <object id="0" x="-0.625" y="-0.5" width="65" height="64.875"/>
+    <object id="0" x="42" y="34" width="6"/>
+   </objectgroup>
+  </tile>
+  <tile id="21">
+   <objectgroup draworder="index">
+    <object id="0" x="-2" y="-2" width="66" height="66"/>
+   </objectgroup>
+  </tile>
+  <tile id="52">
+   <objectgroup draworder="index">
+    <object id="0" x="-2" y="-4" width="66" height="70"/>
+    <object id="0" x="-3" y="-1" width="35" height="18"/>
+    <object id="0" x="25" y="14" width="1"/>
+   </objectgroup>
+  </tile>
+  <tile id="83">
+   <objectgroup draworder="index">
+    <object id="0" x="1" y="-2" width="60" height="66"/>
+   </objectgroup>
+  </tile>
+ </tileset>
+ <layer name="Tile Layer 1" width="300" height="400">
+  <data encoding="base64" compression="zlib">
+   eJztwzEJAAAMA7DOv+mpKPRIIAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA7LpSAAAAAAAAAAAAADY88BoAFw==
+  </data>
+ </layer>
+</map>
