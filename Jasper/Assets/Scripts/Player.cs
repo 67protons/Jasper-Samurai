@@ -304,7 +304,7 @@ public class Player : Entity {
             chargeJumpPotential += chargeJumpMultiplier * Time.deltaTime;
 
             particleSystem.enableEmission = true;            
-            particleSystem.startLifetime = chargeJumpPotential/700;
+            particleSystem.startLifetime = chargeJumpPotential/1000;
         }
     }
 
