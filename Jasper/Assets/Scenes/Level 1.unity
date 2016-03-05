@@ -2223,7 +2223,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 416898, guid: 5abecb9980c1b5e4c8873dda14dcdfe5, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 4.93
+      value: 4.98
       objectReference: {fileID: 0}
     - target: {fileID: 416898, guid: 5abecb9980c1b5e4c8873dda14dcdfe5, type: 2}
       propertyPath: m_LocalPosition.z
@@ -4167,7 +4167,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     startSpeed:
-      scalar: 10
+      scalar: 5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4833,7 +4833,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     y:
-      scalar: 0
+      scalar: 7.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4902,7 +4902,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
-    inWorldSpace: 0
+    inWorldSpace: 1
   InheritVelocityModule:
     enabled: 0
     m_Mode: 0
@@ -4942,7 +4942,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
   ForceModule:
-    enabled: 0
+    enabled: 1
     x:
       scalar: 0
       maxCurve:
@@ -4979,7 +4979,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     y:
-      scalar: 0
+      scalar: 5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -5048,7 +5048,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
-    inWorldSpace: 0
+    inWorldSpace: 1
     randomizePerFrame: 0
   ExternalForcesModule:
     enabled: 0
@@ -5988,7 +5988,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 416898, guid: 5abecb9980c1b5e4c8873dda14dcdfe5, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 4.94
+      value: 4.99
       objectReference: {fileID: 0}
     - target: {fileID: 416898, guid: 5abecb9980c1b5e4c8873dda14dcdfe5, type: 2}
       propertyPath: m_LocalPosition.z
