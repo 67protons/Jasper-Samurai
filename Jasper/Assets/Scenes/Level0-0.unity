@@ -1533,7 +1533,7 @@ Transform:
   - {fileID: 1038685303}
   - {fileID: 1155584797}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!1001 &648444268
 Prefab:
   m_ObjectHideFlags: 0
@@ -2478,7 +2478,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 181494, guid: 97bd35bc386f6c944af63645250d1e17, type: 2}
+    - target: {fileID: 0}
       propertyPath: m_TagString
       value: Terrain
       objectReference: {fileID: 0}
@@ -2486,7 +2486,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 143494, guid: 97bd35bc386f6c944af63645250d1e17, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: 105460, guid: 97bd35bc386f6c944af63645250d1e17, type: 2}
       propertyPath: m_TagString
       value: Terrain
       objectReference: {fileID: 0}
@@ -3744,7 +3748,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!1 &1727752229
 GameObject:
   m_ObjectHideFlags: 0

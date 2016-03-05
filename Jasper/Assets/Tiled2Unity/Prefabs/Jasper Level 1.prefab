@@ -1,5 +1,21 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &105460
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 442156}
+  - 60: {fileID: 6008022}
+  m_Layer: 0
+  m_Name: Collision
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &133474
 GameObject:
   m_ObjectHideFlags: 0
@@ -29,22 +45,6 @@ GameObject:
   - 114: {fileID: 11485158}
   m_Layer: 0
   m_Name: mesh_[00]_[00]_MeshPart1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &143494
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 450154}
-  - 60: {fileID: 6013954}
-  m_Layer: 0
-  m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -102,22 +102,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &181494
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 456496}
-  - 60: {fileID: 6073024}
-  m_Layer: 0
-  m_Name: Collision
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &184332
 GameObject:
   m_ObjectHideFlags: 0
@@ -149,6 +133,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &195676
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 498562}
+  - 60: {fileID: 6068136}
+  m_Layer: 0
+  m_Name: Collision
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &400648
 Transform:
   m_ObjectHideFlags: 1
@@ -160,7 +160,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 477034}
-  - {fileID: 450154}
+  - {fileID: 442156}
   m_Father: {fileID: 447838}
   m_RootOrder: 0
 --- !u!4 &406588
@@ -174,6 +174,18 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 477034}
+  m_RootOrder: 1
+--- !u!4 &442156
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 105460}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 400648}
   m_RootOrder: 1
 --- !u!4 &447838
 Transform:
@@ -189,30 +201,6 @@ Transform:
   - {fileID: 478848}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!4 &450154
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 143494}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 400648}
-  m_RootOrder: 1
---- !u!4 &456496
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 181494}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 478848}
-  m_RootOrder: 1
 --- !u!4 &459278
 Transform:
   m_ObjectHideFlags: 1
@@ -250,7 +238,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 492510}
-  - {fileID: 456496}
+  - {fileID: 498562}
   m_Father: {fileID: 447838}
   m_RootOrder: 1
 --- !u!4 &492510
@@ -265,6 +253,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 478848}
   m_RootOrder: 0
+--- !u!4 &498562
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195676}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 478848}
+  m_RootOrder: 1
 --- !u!23 &2320314
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -364,12 +364,12 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 136480}
   m_Mesh: {fileID: 4300002, guid: b9a3667b410759f4f83045e2f13dd960, type: 3}
---- !u!60 &6013954
+--- !u!60 &6008022
 PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 143494}
+  m_GameObject: {fileID: 105460}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -378,92 +378,14 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Points:
     m_Paths:
-    - - {x: 382.7, y: 0}
-      - {x: 382.7, y: -92.16}
-      - {x: 384, y: -92.16}
-      - {x: 384, y: 0}
-    - - {x: 208.64, y: -24.32}
-      - {x: 209.92, y: -24.32}
-      - {x: 209.92, y: -14.06}
-      - {x: 180.46, y: -14.06}
-      - {x: 180.46, y: -15.36}
-      - {x: 192, y: -15.36}
-      - {x: 192, y: -23.04}
-      - {x: 193.28, y: -23.04}
-      - {x: 193.28, y: -15.36}
-      - {x: 199.68, y: -15.36}
-      - {x: 199.68, y: -24.32}
-      - {x: 200.96, y: -24.32}
-      - {x: 200.96, y: -15.36}
-      - {x: 208.64, y: -15.36}
-    - - {x: 93.43999, y: -19.2}
-      - {x: 96, y: -19.2}
-      - {x: 96, y: -17.9}
-      - {x: 74.22, y: -17.9}
-      - {x: 74.22, y: -19.2}
-      - {x: 88.32, y: -19.2}
-      - {x: 88.32, y: -23.04}
-      - {x: 93.43999, y: -23.04}
-    - - {x: 34.54, y: -19.2}
-      - {x: 37.12, y: -19.2}
-      - {x: 37.12, y: -24.32}
-      - {x: 38.4, y: -24.32}
-      - {x: 38.4, y: -19.2}
-      - {x: 40.96, y: -19.2}
-      - {x: 40.96, y: -24.32}
-      - {x: 42.24, y: -24.32}
-      - {x: 42.24, y: -19.2}
-      - {x: 44.8, y: -19.2}
-      - {x: 44.8, y: -17.9}
-      - {x: 34.54, y: -17.9}
-    - - {x: 112.64, y: -28.16}
-      - {x: 113.92, y: -28.16}
-      - {x: 113.92, y: -26.88}
-      - {x: 115.2, y: -26.88}
-      - {x: 115.2, y: -25.58}
-      - {x: 106.22, y: -25.58}
-      - {x: 106.22, y: -29.44}
-      - {x: 112.64, y: -29.44}
-    - - {x: 294.4, y: -26.86}
-      - {x: 253.42, y: -26.86}
-      - {x: 253.42, y: -34.56}
-      - {x: 280.32, y: -34.56}
-      - {x: 280.32, y: -33.26}
-      - {x: 271.36, y: -33.26}
-      - {x: 271.36, y: -30.72}
-      - {x: 294.4, y: -30.72}
-    - - {x: 106.22, y: -65.26}
-      - {x: 102.38, y: -65.26}
-      - {x: 102.38, y: -66.58}
-      - {x: 106.22, y: -66.58}
-    - - {x: 93.42, y: -69.1}
-      - {x: 89.57999, y: -69.1}
-      - {x: 89.57999, y: -70.42}
-      - {x: 93.42, y: -70.42}
-    - - {x: 99.82, y: -79.34}
-      - {x: 95.98, y: -79.34}
-      - {x: 95.98, y: -80.66}
-      - {x: 99.82, y: -80.66}
-    - - {x: 94.7, y: -90.86}
-      - {x: 90.86, y: -90.86}
-      - {x: 90.86, y: -92.18}
-      - {x: 94.7, y: -92.18}
-    - - {x: 102.38, y: -98.54}
-      - {x: 98.54, y: -98.54}
-      - {x: 98.54, y: -99.86}
-      - {x: 102.38, y: -99.86}
-    - - {x: 107.5, y: -107.5}
-      - {x: 103.66, y: -107.5}
-      - {x: 103.66, y: -108.82}
-      - {x: 107.5, y: -108.82}
-    - - {x: 102.38, y: -116.46}
-      - {x: 98.54, y: -116.46}
-      - {x: 98.54, y: -117.78}
-      - {x: 102.38, y: -117.78}
     - - {x: 372.46, y: -138.26}
       - {x: 372.46, y: -131.86}
       - {x: 383.98, y: -131.86}
-      - {x: 383.98, y: -122.86}
+      - {x: 383.98, y: -92.16}
+      - {x: 384, y: -92.16}
+      - {x: 384, y: 0}
+      - {x: 382.7, y: 0}
+      - {x: 382.7, y: -122.86}
       - {x: 372.46, y: -122.86}
       - {x: 372.46, y: -124.14}
       - {x: 369.9, y: -124.14}
@@ -862,6 +784,84 @@ PolygonCollider2D:
       - {x: 83.18, y: -131.82}
       - {x: 52.46, y: -131.82}
       - {x: 52.46, y: -126.74}
+    - - {x: 208.64, y: -24.32}
+      - {x: 209.92, y: -24.32}
+      - {x: 209.92, y: -14.06}
+      - {x: 180.46, y: -14.06}
+      - {x: 180.46, y: -15.36}
+      - {x: 192, y: -15.36}
+      - {x: 192, y: -23.04}
+      - {x: 193.28, y: -23.04}
+      - {x: 193.28, y: -15.36}
+      - {x: 199.68, y: -15.36}
+      - {x: 199.68, y: -24.32}
+      - {x: 200.96, y: -24.32}
+      - {x: 200.96, y: -15.36}
+      - {x: 208.64, y: -15.36}
+    - - {x: 93.43999, y: -19.2}
+      - {x: 96, y: -19.2}
+      - {x: 96, y: -17.9}
+      - {x: 74.22, y: -17.9}
+      - {x: 74.22, y: -19.2}
+      - {x: 88.32, y: -19.2}
+      - {x: 88.32, y: -23.04}
+      - {x: 93.43999, y: -23.04}
+    - - {x: 34.54, y: -19.2}
+      - {x: 37.12, y: -19.2}
+      - {x: 37.12, y: -24.32}
+      - {x: 38.4, y: -24.32}
+      - {x: 38.4, y: -19.2}
+      - {x: 40.96, y: -19.2}
+      - {x: 40.96, y: -24.32}
+      - {x: 42.24, y: -24.32}
+      - {x: 42.24, y: -19.2}
+      - {x: 44.8, y: -19.2}
+      - {x: 44.8, y: -17.9}
+      - {x: 34.54, y: -17.9}
+    - - {x: 112.64, y: -28.16}
+      - {x: 113.92, y: -28.16}
+      - {x: 113.92, y: -26.88}
+      - {x: 115.2, y: -26.88}
+      - {x: 115.2, y: -25.58}
+      - {x: 106.22, y: -25.58}
+      - {x: 106.22, y: -29.44}
+      - {x: 112.64, y: -29.44}
+    - - {x: 294.4, y: -26.86}
+      - {x: 253.42, y: -26.86}
+      - {x: 253.42, y: -34.56}
+      - {x: 280.32, y: -34.56}
+      - {x: 280.32, y: -33.26}
+      - {x: 271.36, y: -33.26}
+      - {x: 271.36, y: -30.72}
+      - {x: 294.4, y: -30.72}
+    - - {x: 106.22, y: -65.26}
+      - {x: 102.38, y: -65.26}
+      - {x: 102.38, y: -66.58}
+      - {x: 106.22, y: -66.58}
+    - - {x: 93.42, y: -69.1}
+      - {x: 89.57999, y: -69.1}
+      - {x: 89.57999, y: -70.42}
+      - {x: 93.42, y: -70.42}
+    - - {x: 99.82, y: -79.34}
+      - {x: 95.98, y: -79.34}
+      - {x: 95.98, y: -80.66}
+      - {x: 99.82, y: -80.66}
+    - - {x: 94.7, y: -90.86}
+      - {x: 90.86, y: -90.86}
+      - {x: 90.86, y: -92.18}
+      - {x: 94.7, y: -92.18}
+    - - {x: 102.38, y: -98.54}
+      - {x: 98.54, y: -98.54}
+      - {x: 98.54, y: -99.86}
+      - {x: 102.38, y: -99.86}
+    - - {x: 107.5, y: -107.5}
+      - {x: 103.66, y: -107.5}
+      - {x: 103.66, y: -108.82}
+      - {x: 107.5, y: -108.82}
+    - - {x: 102.38, y: -116.46}
+      - {x: 98.54, y: -116.46}
+      - {x: 98.54, y: -117.78}
+      - {x: 102.38, y: -117.78}
     - - {x: 107.5, y: -125.42}
       - {x: 103.66, y: -125.42}
       - {x: 103.66, y: -126.74}
@@ -1036,12 +1036,12 @@ PolygonCollider2D:
       - {x: 330.24, y: -491.52}
       - {x: 384, y: -491.52}
       - {x: 384, y: -478.72}
---- !u!60 &6073024
+--- !u!60 &6068136
 PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 181494}
+  m_GameObject: {fileID: 195676}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
