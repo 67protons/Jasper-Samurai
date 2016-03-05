@@ -21,7 +21,8 @@ public class Player : Entity {
     public float dashForce = 800f;
     public float dashDuration = .4f;
     public float dashCost = 20f;
-    public bool dashing = false;   //For controller support because Left Trigger is an axis
+    public bool dashing = false;
+    private bool rightTriggerDown = false;  //For controller support because Left Trigger is an axis
 
     ///Charge Jump Ability
     public bool chargeJumpUnlocked = true;
@@ -119,14 +120,14 @@ public class Player : Entity {
             }
 
             ///Dash
-            if (dashUnlocked && (Input.GetKeyDown(KeyCode.Space) || (!dashing && Input.GetAxis("Right Trigger") == 1)))
+            if (dashUnlocked && (Input.GetKeyDown(KeyCode.Space) || (!rightTriggerDown && Input.GetAxis("Right Trigger") == 1)))
             {
-                //dashing = true;
+                rightTriggerDown = true;
                 Dash();
             }
             if (Input.GetAxis("Right Trigger") == 0)
             {
-                //dashing = false;
+                rightTriggerDown = false;
             }
         }
 
@@ -196,12 +197,12 @@ public class Player : Entity {
         if (!playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("dashing") &&
             !playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("slashing") &&
             !playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("ducking"))
-        {
-            if (this.GetComponent<Rigidbody2D>().velocity.y > 0)
+        {            
+            if (this.GetComponent<Rigidbody2D>().velocity.y > 0.5)
             {
                 playerAnimator.Play("jumping");
             }
-            else if (this.GetComponent<Rigidbody2D>().velocity.y < 0)
+            else if (this.GetComponent<Rigidbody2D>().velocity.y < -0.5)
             {
                 playerAnimator.Play("falling");
             }
@@ -296,27 +297,9 @@ public class Player : Entity {
 
     private void ChargeJump()
     {
-        playerAnimator.SetBool("charging", false);
-        //GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, (float)Math.Sqrt(chargeJumpPotential) * chargeJumpMultiplier));        
+        playerAnimator.SetBool("charging", false);        
         GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, chargeJumpPotential));
         chargeJumpPotential = 0;
         charging = false;
     }
 }
-
-
-//void OnCollisionStay2D(Collision2D hitObject)
-//{
-//    if (hitObject.contacts[0].normal.y > 0)
-//    {
-//        isGrounded = true;
-//    }
-//}
-
-//void OnCollisionExit2D(Collision2D hitObject)
-//{
-//    if (hitObject.contacts[0].normal.y > 0)
-//    {
-//        isGrounded = false;
-//    }
-//}
