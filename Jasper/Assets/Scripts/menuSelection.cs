@@ -12,31 +12,32 @@ public class menuSelection : MonoBehaviour
 
     void Start()
     {
-        getStartMenu();
+        mainMenu.SetActive(true);
+        //getStartMenu();
     }
 
     void Update()
     {
-        if(Input.GetKeyDown("return") && onStartMenu == true)
-        {
-            pressStart();
+        //if(Input.GetKeyDown("return") && onStartMenu == true)
+        //{
+        //    pressStart();
            
-        }
+        //}
     }
 
-	public void pressStart()
-    {
-        startMenu.SetActive(false);
-        mainMenu.SetActive(true);
-        onStartMenu = false;
-    }
+    //public void pressStart()
+    //{
+    //    startMenu.SetActive(false);
+    //    mainMenu.SetActive(true);
+    //    onStartMenu = false;
+    //}
 
-    public void getStartMenu()
-    {
-        mainMenu.SetActive(false);
-        startMenu.SetActive(true);
-        onStartMenu = true;
-    }
+    //public void getStartMenu()
+    //{
+    //    mainMenu.SetActive(false);
+    //    startMenu.SetActive(true);
+    //    onStartMenu = true;
+    //}
 
     public void startGame()
     {        

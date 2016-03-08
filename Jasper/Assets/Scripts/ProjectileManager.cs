@@ -37,7 +37,7 @@ public class ProjectileManager : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D hitObject)
     {
-        if (hitObject.CompareTag("Terrain"))
+        if (hitObject.CompareTag("Terrain") || hitObject.CompareTag("Breakable") || hitObject.CompareTag("Dashable"))
         {
             Destroy(this.gameObject);
         }
