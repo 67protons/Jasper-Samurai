@@ -195,6 +195,7 @@ public class Player : Entity {
         if (feet.isGrounded)
         {
             smashing = false;
+            playerAnimator.SetBool("smashing", false);
         }
 
         ///Make player invulnerable when dashing
@@ -212,7 +213,7 @@ public class Player : Entity {
             {
                 playerAnimator.Play("jumping");
             }
-            else if (this.GetComponent<Rigidbody2D>().velocity.y < -2)
+            else if (this.GetComponent<Rigidbody2D>().velocity.y < -2 && !playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("smashing"))
             {
                 playerAnimator.Play("falling");
             }
@@ -253,7 +254,9 @@ public class Player : Entity {
 
     private void Smash()
     {
-        smashing = true;
+        smashing = true;        
+        playerAnimator.SetBool("smashing", true);
+        playerAnimator.Play("smashing");
         this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -2000));
     }
 
