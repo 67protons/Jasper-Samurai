@@ -59,8 +59,9 @@ GameObject:
   - 61: {fileID: 6138512}
   - 50: {fileID: 5068038}
   - 114: {fileID: 11463926}
+  - 95: {fileID: 9574258}
   m_Layer: 0
-  m_Name: RolyPoly (Walk)
+  m_Name: RolyPoly
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -116,7 +117,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 150434}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.51, y: 4.95, z: 0}
+  m_LocalPosition: {x: 20.51, y: 4.62, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 444706}
@@ -175,7 +176,7 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 1, y: -1.1}
+  m_Offset: {x: 1, y: -0.6}
   serializedVersion: 2
   m_Radius: 0.07
 --- !u!61 &6138512
@@ -191,7 +192,24 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Size: {x: 1.47, y: 1.82}
+  m_Size: {x: 2.4514284, y: 1.0914285}
+--- !u!95 &9574258
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 150434}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e0607c1ea0754f646a01af32785c435b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11463926
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -277,7 +295,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1496859957
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300052, guid: 2558042d79103cd44bf4d3e71f7b4c82, type: 3}
+  m_Sprite: {fileID: 21300000, guid: eb1523a6339d82c4ca2e603a289a665a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
