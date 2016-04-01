@@ -5,7 +5,7 @@ public class RolyPolyFeetCollision : MonoBehaviour {
     [HideInInspector]
     public bool isGrounded = true;
 
-    void OnTriggerStay2D(Collider2D hitObject)
+    void OnTriggerEnter2D(Collider2D hitObject)
     {
         if (hitObject.CompareTag("Terrain"))
         {
@@ -14,7 +14,7 @@ public class RolyPolyFeetCollision : MonoBehaviour {
     }
 
     void OnTriggerExit2D(Collider2D hitObject)
-    {
+    {        
         if (hitObject.CompareTag("Terrain"))
         {            
             isGrounded = false;

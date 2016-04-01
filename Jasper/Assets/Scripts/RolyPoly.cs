@@ -31,7 +31,7 @@ public class RolyPoly : Enemy {
     void OnTriggerEnter2D(Collider2D hitObject)
     {
         if (hitObject.CompareTag("Player"))
-        {
+        {         
             Entity playerEntity = hitObject.GetComponent<Entity>();
             if (playerEntity.damageable)
                 this.DealDamage(playerEntity, damage);

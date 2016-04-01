@@ -57,6 +57,7 @@ GameObject:
   - 4: {fileID: 483808}
   - 58: {fileID: 5882198}
   - 114: {fileID: 11442594}
+  - 50: {fileID: 5053972}
   m_Layer: 0
   m_Name: FeetCollider
   m_TagString: Untagged
@@ -128,7 +129,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 172248}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.39, y: -1.35, z: 0}
+  m_LocalPosition: {x: 11.390001, y: -1.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 435332}
@@ -147,6 +148,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 481302}
   m_RootOrder: 1
+--- !u!50 &5053972
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 153534}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!50 &5078648
 Rigidbody2D:
   serializedVersion: 2
