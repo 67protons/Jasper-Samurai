@@ -16,14 +16,6 @@ public class Player : Entity {
     public bool smashing;
     private bool movingLeft = false, movingRight = false;
 
-    ///Dash Ability
-    public bool dashUnlocked = true;
-    public float dashForce = 800f;
-    public float dashDuration = .4f;
-    public float dashCost = 20f;
-    public bool dashing = false;
-    private bool rightTriggerDown = false;  //For controller support because Left Trigger is an axis
-
     ///Charge Jump Ability
     public bool chargeJumpUnlocked = true;
     public float chargeJumpMultiplier = 100f;
@@ -31,6 +23,23 @@ public class Player : Entity {
     private float chargeJumpPotential;
     private bool charging = false;  // Prevent other movement while charging.
 
+    ///Parry Ability
+    public bool parryUnlocked = true;
+    public float parryDuration = 0.5f;
+    [HideInInspector]
+    public bool parrying = false;
+    //private float parryTimer = 0f;
+
+    ///Dash Ability
+    public bool dashUnlocked = true;
+    public float dashForce = 800f;
+    public float dashDuration = .4f;
+    public float dashCost = 20f;
+    [HideInInspector]
+    public bool dashing = false;
+    private bool rightTriggerDown = false;  //For controller support because Left Trigger is an axis    
+
+    [HideInInspector]
     public Animator playerAnimator;
     PlayerMeleeManager meleeManager;
     PlayerFeetCollision feet;
@@ -52,30 +61,7 @@ public class Player : Entity {
 
         particleSystem = this.transform.FindChild("ParticleSystem").GetComponent<ParticleSystem>();
         particleSystem.enableEmission = false;
-    }
-
-    void OnTriggerEnter2D(Collider2D hitObject)
-    {
-        if (hitObject.CompareTag("Instakill"))
-        {
-            currentHealth = 0;
-        }
-
-        if (hitObject.CompareTag("Enemy"))
-        {
-            if (dashing)
-            {
-                DealDamage(hitObject.GetComponent<Entity>(), 100);
-            }                
-            //TODO : hitObject.GetComponent<EnemyController>().DealDamage();
-        }
-
-        if (hitObject.CompareTag("Respawn"))
-        {
-            //TODO : only reset checkpoint if new checkpoint.x value is greater than old checkpoint.x value
-            currentCheckpoint = hitObject.gameObject;
-        }
-    }
+    }   
 
     public override void Update()
     {
@@ -117,6 +103,22 @@ public class Player : Entity {
             StandUp();
         }
 
+        ///Charge Jump
+        if (chargeJumpUnlocked && (Input.GetKey(KeyCode.I) || Input.GetKey(KeyCode.Mouse2) || Input.GetKey(KeyCode.JoystickButton3)))
+        {
+            Charge();
+        }
+        if (Input.GetKeyUp(KeyCode.I) || Input.GetKeyUp(KeyCode.Mouse2) || Input.GetKeyUp(KeyCode.JoystickButton3))
+        {
+            ChargeJump();
+        }
+
+        ///Parry
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Parry();
+        }
+
         if (!charging)  //Prevent these methods of movement while charging for ChargeJump
         {           
             ///Jump
@@ -135,17 +137,31 @@ public class Player : Entity {
             {
                 rightTriggerDown = false;
             }
+        }        
+    }
+
+    void OnTriggerEnter2D(Collider2D hitObject)
+    {
+        if (hitObject.CompareTag("Instakill"))
+        {
+            currentHealth = 0;
         }
 
-
-        ///Charge Jump
-        if (chargeJumpUnlocked && (Input.GetKey(KeyCode.I) || Input.GetKey(KeyCode.Mouse2) || Input.GetKey(KeyCode.JoystickButton3)))
+        if (hitObject.CompareTag("Enemy"))
         {
-            Charge();
+            if (dashing)
+            {
+                DealDamage(hitObject.GetComponent<Entity>(), 100);
+            }
+            else if (parrying){
+                hitObject.GetComponent<Entity>().EnactParry();
+            }
         }
-        if (Input.GetKeyUp(KeyCode.I) || Input.GetKeyUp(KeyCode.Mouse2) || Input.GetKeyUp(KeyCode.JoystickButton3))
+
+        if (hitObject.CompareTag("Respawn"))
         {
-            ChargeJump();
+            //TODO : only reset checkpoint if new checkpoint.x value is greater than old checkpoint.x value
+            currentCheckpoint = hitObject.gameObject;
         }
     }
 
@@ -161,25 +177,7 @@ public class Player : Entity {
             Move(Direction.Right);
             playerAnimator.SetBool("walking", true);
         }
-    }
-
-    /* Helper state management functions below */
-
-    private void SpiritRegen()
-    {
-        if (currentSpirit <= maxSpirit)
-        {
-            currentSpirit += spiritRegenPerSec * Time.deltaTime;
-        }
-    }
-
-    private void Respawn()
-    {
-        currentHealth = maxHealth;
-        currentSpirit = maxSpirit;
-        Vector2 spawnPoint = currentCheckpoint.transform.FindChild("Respawn Location").position;
-        this.transform.position = spawnPoint;
-    }
+    }   
 
     private void ManageState()
     {
@@ -191,15 +189,13 @@ public class Player : Entity {
         if (!charging)
             SpiritRegen();
 
-        ///
+        ///End smashing animation when feet touch the ground
         if (feet.isGrounded)
         {
             smashing = false;
             playerAnimator.SetBool("smashing", false);
         }
-
-        ///Make player invulnerable when dashing
-        damageable = !dashing;        
+        playerAnimator.SetBool("parrying", parrying);
 
         ///Play proper player animations for ducking, jumping, falling, and landing
         if (ducking && !playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("duckWalking"))
@@ -227,6 +223,14 @@ public class Player : Entity {
 
 
     /* Movement helper functions below */
+    private void Jump()
+    {
+        if (feet.isGrounded)
+        {
+            GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpForce));
+        }
+    }   
+
     private void Duck()
     {
         ducking = true;
@@ -258,42 +262,7 @@ public class Player : Entity {
         playerAnimator.SetBool("smashing", true);
         playerAnimator.Play("smashing");
         this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -2000));
-    }
-
-    private void Jump()
-    {
-        if (feet.isGrounded)
-        {
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpForce));
-        }        
-    }
-
-    private void Dash()
-    {
-        if (currentSpirit > dashCost && !ducking)
-        {            
-            currentSpirit -= dashCost;
-            playerAnimator.Play("dashing");
-            StopCoroutine(DashCoroutine());
-            StartCoroutine(DashCoroutine());
-        }
-    }
-
-    private IEnumerator DashCoroutine()
-    {
-        dashing = true;
-        if (currentDirection == Direction.Right)
-        {
-            this.GetComponent<Rigidbody2D>().AddForce(new Vector2(dashForce, 0f));
-        }
-        else if (currentDirection == Direction.Left)
-        {
-            this.GetComponent<Rigidbody2D>().AddForce(new Vector2(-dashForce, 0f));
-        }
-        yield return new WaitForSeconds(dashDuration);
-        this.GetComponent<Rigidbody2D>().velocity = new Vector2(0, this.GetComponent<Rigidbody2D>().velocity.y);
-        dashing = false;
-    }
+    }     
 
     private void Charge()
     {
@@ -318,5 +287,66 @@ public class Player : Entity {
         GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, chargeJumpPotential));
         chargeJumpPotential = 0;
         charging = false;
+    }
+
+    private void Parry()
+    {
+        playerAnimator.Play("parrying");
+        StopCoroutine(ParryCoroutine());
+        StartCoroutine(ParryCoroutine());
+    }
+
+    private IEnumerator ParryCoroutine()
+    {
+        parrying = true;
+        MakeInvulnerable(parryDuration);
+        yield return new WaitForSeconds(parryDuration);
+        parrying = false;
+    }
+
+    private void Dash()
+    {
+        if (currentSpirit > dashCost && !ducking)
+        {
+            currentSpirit -= dashCost;
+            playerAnimator.Play("dashing");
+            StopCoroutine(DashCoroutine());
+            StartCoroutine(DashCoroutine());
+        }
+    }
+
+    private IEnumerator DashCoroutine()
+    {
+        dashing = true;
+        MakeInvulnerable(dashDuration);
+        if (currentDirection == Direction.Right)
+        {
+            this.GetComponent<Rigidbody2D>().AddForce(new Vector2(dashForce, 0f));
+        }
+        else if (currentDirection == Direction.Left)
+        {
+            this.GetComponent<Rigidbody2D>().AddForce(new Vector2(-dashForce, 0f));
+        }
+        yield return new WaitForSeconds(dashDuration);
+        this.GetComponent<Rigidbody2D>().velocity = new Vector2(0, this.GetComponent<Rigidbody2D>().velocity.y);
+        dashing = false;
+    }
+
+    /* Helper state management functions below */
+
+    private void SpiritRegen()
+    {
+        if (currentSpirit <= maxSpirit)
+        {
+            currentSpirit += spiritRegenPerSec * Time.deltaTime;
+        }
+    }
+
+    private void Respawn()
+    {
+        currentHealth = maxHealth;
+        currentSpirit = maxSpirit;
+        Vector2 spawnPoint = currentCheckpoint.transform.FindChild("Respawn Location").position;
+        this.transform.position = spawnPoint;
     }
 }

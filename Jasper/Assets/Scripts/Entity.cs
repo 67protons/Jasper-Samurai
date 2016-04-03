@@ -17,7 +17,8 @@ public class Entity : MonoBehaviour {
          
     protected Vector2 stationarySpeed = new Vector2(0f, 0f);
 
-    private SpriteRenderer sprite;    
+    private SpriteRenderer sprite;
+    private float invulnTimer = 0;
 
     public virtual void Awake()
     {
@@ -35,7 +36,11 @@ public class Entity : MonoBehaviour {
         if (currentDirection == Direction.Left)
             this.transform.localScale = new Vector3(-1, 1, 1);            
         else
-            this.transform.localScale = new Vector3(1, 1, 1);                
+            this.transform.localScale = new Vector3(1, 1, 1);
+        if (invulnTimer > 0)
+            invulnTimer -= Time.deltaTime;
+        else
+            MakeVulnerable();
     }
 
     public void Move(Direction directionToMove)
@@ -77,5 +82,23 @@ public class Entity : MonoBehaviour {
     public void ReceiveDamage(float damage)
     {        
         this.currentHealth -= damage;
+    }
+
+    public void MakeInvulnerable(float duration)
+    {
+        damageable = false;
+        if (duration > invulnTimer)
+            invulnTimer = duration;
+    }
+
+    public void MakeVulnerable()
+    {
+        damageable = true;
+        invulnTimer = 0;
+    }
+
+    public virtual void EnactParry()
+    {
+        Debug.Log("Nothing written");
     }
 }

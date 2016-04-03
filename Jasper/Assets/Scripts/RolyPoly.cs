@@ -22,7 +22,7 @@ public class RolyPoly : Enemy {
         }
         if (!feet.isGrounded)
         {
-            this.currentDirection = this.OppositeDirection(this.currentDirection);            
+            this.currentDirection = this.OppositeDirection(this.currentDirection);     
         }
 
         this.Move(this.currentDirection);
@@ -40,5 +40,10 @@ public class RolyPoly : Enemy {
         {            
             currentDirection = this.OppositeDirection(this.currentDirection);
         }
+    }
+
+    public override void EnactParry()
+    {
+        this.currentDirection = this.OppositeDirection(this.currentDirection);
     }
 }
