@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SpiderBoss : Entity {
+public class SpiderBoss : Enemy {
     public GameObject projectilePrefab;
     public float projectileDamage = 5f;
     public float projectileForce = 400f;
@@ -29,11 +29,11 @@ public class SpiderBoss : Entity {
             GameObject projectile = null;
             if (highShot)
             {
-                projectile = (GameObject)Instantiate(projectilePrefab, transform.position + new Vector3(0, .75f, 0), Quaternion.identity);                
+                projectile = (GameObject)Instantiate(projectilePrefab, transform.position + new Vector3(0, 1f, 0), Quaternion.identity);                
             }
             else
             {
-                projectile = (GameObject)Instantiate(projectilePrefab, transform.position - new Vector3(0, 1f, 0), Quaternion.identity);
+                projectile = (GameObject)Instantiate(projectilePrefab, transform.position - new Vector3(0, .5f, 0), Quaternion.identity);
             }
             highShot = !highShot;
 

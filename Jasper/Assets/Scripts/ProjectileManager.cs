@@ -17,7 +17,8 @@ public class ProjectileManager : MonoBehaviour {
         projectileForce = force;
         if (direction == Entity.Direction.Left)
         {
-            this.GetComponent<SpriteRenderer>().flipX = true;
+            //this.GetComponent<SpriteRenderer>().flipX = true;
+            this.transform.localScale = new Vector3(-1, 1, 1);
             xDir = -1;
         }                    
     }
