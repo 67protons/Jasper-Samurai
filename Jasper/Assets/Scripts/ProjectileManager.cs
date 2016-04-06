@@ -49,7 +49,8 @@ public class ProjectileManager : MonoBehaviour {
         }
         else if (projectileOwner == "Enemy" && hitObject.CompareTag("Player"))
         {
-
+            hitObject.GetComponent<Entity>().ReceiveDamage(damage);
+            Destroy(this.gameObject);
         }
     }
 }
