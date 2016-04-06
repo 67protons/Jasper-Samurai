@@ -17,6 +17,10 @@ public class Enemy : Entity {
         if (healthBar != null)
         {
             healthBar.localScale = new Vector3(currentHealth / maxHealth, 1, 1);
-        }    
+        }
+        if (this.currentHealth <= 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

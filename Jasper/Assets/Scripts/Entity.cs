@@ -9,7 +9,7 @@ public class Entity : MonoBehaviour {
     public Direction currentDirection = Direction.Left;
 
     public float maxHealth = 100f;
-    [HideInInspector]
+    //[HideInInspector]
     public float currentHealth;
     public bool damageable = true;
 
@@ -75,7 +75,7 @@ public class Entity : MonoBehaviour {
     }
 
     public void DealDamage(Entity victim, float damage)
-    {
+    {        
         victim.currentHealth -= damage;
     }
 

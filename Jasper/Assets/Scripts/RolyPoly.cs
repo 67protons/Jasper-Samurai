@@ -16,10 +16,10 @@ public class RolyPoly : Enemy {
     void FixedUpdate()
     {
         base.Update();
-        if (this.currentHealth <= 0)
-        {
-            Destroy(this.gameObject);
-        }
+        //if (this.currentHealth <= 0)
+        //{
+        //    Destroy(this.gameObject);
+        //}
         if (!feet.isGrounded)
         {
             this.currentDirection = this.OppositeDirection(this.currentDirection);     

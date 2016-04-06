@@ -9,8 +9,14 @@ public class SpiderBoss : Enemy {
     private float shotCooldown = 0f;
     private bool highShot = false;
     private int currentPhase = 1;
+
+    void Start()
+    {
+        this.currentDirection = Direction.Left;
+    }
 		
 	void Update () {
+        base.Update();
         if (currentPhase == 1)
         {
             PhaseOne();
