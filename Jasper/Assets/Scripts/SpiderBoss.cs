@@ -9,23 +9,48 @@ public class SpiderBoss : Enemy {
     private float shotCooldown = 0f;
     private bool highShot = false;
     private int currentPhase = 1;
+    private Vector2 leftSpawn, rightSpawn;
+    private Player _player;
+
+    void Awake()
+    {
+        base.Awake();
+        leftSpawn = this.transform.FindChild("LeftSpawn").position;
+        rightSpawn = this.transform.FindChild("RightSpawn").position;
+        _player = GameObject.Find("Player").GetComponent<Player>();
+    }
 
     void Start()
     {
-        this.currentDirection = Direction.Left;
+        
     }
 		
 	void Update () {
         base.Update();
+
+        if (this.currentHealth <= 500)
+        {
+            this.currentPhase = 2;
+        }
+
         if (currentPhase == 1)
         {
             PhaseOne();
+        }
+        else if (currentPhase == 2){
+            PhaseTwo();
         }
 	}
 
     private void PhaseOne()
     {
         Shoot();
+        FlipSides();
+    }
+
+    private void PhaseTwo()
+    {
+        WebSmash();
     }
 
     private void Shoot()
@@ -52,6 +77,26 @@ public class SpiderBoss : Enemy {
         else
         {
             shotCooldown -= Time.deltaTime;
+        }
+    }
+
+    private void WebSmash()
+    {
+        Debug.Log(_player.transform.position);
+    }
+
+
+    void FlipSides()
+    {
+        if ((int)this.currentHealth % 200 == 0)
+        {
+            this.transform.position = rightSpawn;
+            this.currentDirection = Direction.Left;
+        }
+        else
+        {
+            this.transform.position = leftSpawn;
+            this.currentDirection = Direction.Right;
         }
     }
 }
