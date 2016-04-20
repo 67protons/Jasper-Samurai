@@ -1594,7 +1594,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 562274026}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1895355379}
@@ -1617,6 +1617,7 @@ GameObject:
   - 114: {fileID: 611815865}
   - 61: {fileID: 611815864}
   - 50: {fileID: 611815863}
+  - 95: {fileID: 611815866}
   m_Layer: 0
   m_Name: Arach-Nick
   m_TagString: Enemy
@@ -1650,7 +1651,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 16577aca888bc7c479154e7b8d0cfe02, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1d46117a1020a2b43a8c591bc78a0829, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1677,7 +1678,7 @@ Rigidbody2D:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 611815860}
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 9001
   m_LinearDrag: 0
   m_AngularDrag: 0.5
   m_GravityScale: 0
@@ -1695,11 +1696,11 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.5}
   serializedVersion: 2
-  m_Size: {x: 1, y: 3.31}
+  m_Size: {x: 1, y: 4}
 --- !u!114 &611815865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1714,11 +1715,28 @@ MonoBehaviour:
   currentDirection: 0
   maxHealth: 1000
   currentHealth: 0
-  damageable: 1
+  damageable: 0
   moveSpeed: {x: 0, y: 0}
   projectilePrefab: {fileID: 156398, guid: bddd8fb305e8d724fa88572c1fdc79a1, type: 2}
   projectileDamage: 5
   projectileForce: 400
+--- !u!95 &611815866
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 611815860}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6aa0b8c3e92dcff4ab11f87962589d52, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1001 &626633141
 Prefab:
   m_ObjectHideFlags: 0

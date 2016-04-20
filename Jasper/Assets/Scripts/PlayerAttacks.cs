@@ -39,8 +39,15 @@ public class PlayerAttacks : MonoBehaviour {
 	}
 
     private IEnumerator Slash()
-    {        
-        player.playerAnimator.Play("slashing");
+    {
+        if (player.ducking)
+        {
+            player.playerAnimator.Play("crouchSlash");
+        }
+        else
+        {
+            player.playerAnimator.Play("slashing");
+        }        
         yield return new WaitForSeconds(.25f);
         foreach (GameObject enemy in enemiesInMeleeRange){            
             player.DealDamage(enemy.GetComponent<Entity>(), 100);

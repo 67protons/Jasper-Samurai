@@ -1,0 +1,287 @@
+fileFormatVersion: 2
+guid: 1d46117a1020a2b43a8c591bc78a0829
+timeCreated: 1461186657
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: SpiderBoss_IdleAnimation_0
+    21300002: SpiderBoss_IdleAnimation_1
+    21300004: SpiderBoss_IdleAnimation_2
+    21300006: SpiderBoss_IdleAnimation_3
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 300
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: SpiderBoss_IdleAnimation_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1279
+        height: 1333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -22, y: -231}
+        - {x: -22, y: -235}
+        - {x: -24, y: -173}
+        - {x: -9, y: -149}
+        - {x: 29, y: -242}
+        - {x: 47, y: -249}
+        - {x: 103, y: -255}
+        - {x: 242, y: -24}
+        - {x: 242, y: 235}
+        - {x: 200, y: 267}
+        - {x: -168, y: 267}
+        - {x: -231, y: 247}
+        - {x: -216, y: 237}
+        - {x: -247, y: 107}
+        - {x: -247, y: 72}
+        - {x: -246, y: 71}
+        - {x: -238, y: 74}
+        - {x: -241, y: -77}
+        - {x: -120, y: -181}
+        - {x: -99, y: -162}
+        - {x: -56, y: -250}
+        - {x: -27, y: -265}
+        - {x: 1, y: -265}
+        - {x: 4, y: -258}
+        - {x: 2, y: -244}
+        - {x: -19, y: -230}
+      - - {x: -143, y: -170}
+        - {x: -140, y: -169}
+        - {x: -140, y: -166}
+        - {x: -143, y: -165}
+        - {x: -145, y: -167}
+      - - {x: -96, y: -167}
+        - {x: -93, y: -166}
+        - {x: -93, y: -163}
+        - {x: -96, y: -162}
+        - {x: -98, y: -164}
+    - name: SpiderBoss_IdleAnimation_1
+      rect:
+        serializedVersion: 2
+        x: 1279
+        y: 0
+        width: 1279
+        height: 1333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 61, y: -209}
+        - {x: 60, y: -213}
+        - {x: 50, y: -86}
+        - {x: 118, y: -132}
+        - {x: 240, y: 72}
+        - {x: 240, y: 103}
+        - {x: 208, y: 131}
+        - {x: 151, y: 153}
+        - {x: 84, y: 148}
+        - {x: 64, y: 144}
+        - {x: 189, y: 257}
+        - {x: 194, y: 264}
+        - {x: 188, y: 267}
+        - {x: -55, y: 267}
+        - {x: -52, y: 233}
+        - {x: -51, y: 230}
+        - {x: -153, y: 264}
+        - {x: -168, y: 267}
+        - {x: -249, y: 267}
+        - {x: -249, y: 54}
+        - {x: -235, y: 8}
+        - {x: -249, y: -46}
+        - {x: -249, y: -197}
+        - {x: -43, y: -263}
+        - {x: 30, y: -263}
+        - {x: 87, y: -241}
+        - {x: 81, y: -223}
+        - {x: 77, y: -220}
+      - - {x: -98, y: -164}
+        - {x: -95, y: -163}
+        - {x: -95, y: -160}
+        - {x: -98, y: -159}
+        - {x: -100, y: -161}
+      - - {x: -133, y: -155}
+        - {x: -130, y: -154}
+        - {x: -130, y: -151}
+        - {x: -133, y: -150}
+        - {x: -135, y: -152}
+    - name: SpiderBoss_IdleAnimation_2
+      rect:
+        serializedVersion: 2
+        x: 2558
+        y: 0
+        width: 1279
+        height: 1333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -22, y: -232}
+        - {x: -22, y: -234}
+        - {x: -24, y: -229}
+        - {x: 13, y: -148}
+        - {x: 28, y: -232}
+        - {x: 46, y: -250}
+        - {x: 103, y: -258}
+        - {x: 112, y: -115}
+        - {x: 230, y: -17}
+        - {x: 205, y: 44}
+        - {x: 171, y: 72}
+        - {x: 144, y: 87}
+        - {x: 255, y: 139}
+        - {x: 255, y: 195}
+        - {x: 112, y: 264}
+        - {x: -149, y: 264}
+        - {x: -256, y: 163}
+        - {x: -256, y: 153}
+        - {x: -253, y: 152}
+        - {x: -226, y: -16}
+        - {x: -218, y: -11}
+        - {x: -256, y: -56}
+        - {x: -256, y: -70}
+        - {x: -155, y: -211}
+        - {x: -106, y: -169}
+        - {x: -95, y: -156}
+        - {x: -49, y: -247}
+        - {x: -30, y: -264}
+        - {x: -23, y: -265}
+        - {x: 2, y: -265}
+        - {x: 5, y: -260}
+        - {x: -1, y: -236}
+        - {x: -20, y: -229}
+      - - {x: -143, y: -170}
+        - {x: -140, y: -169}
+        - {x: -140, y: -166}
+        - {x: -143, y: -165}
+        - {x: -145, y: -167}
+      - - {x: -96, y: -167}
+        - {x: -93, y: -166}
+        - {x: -93, y: -163}
+        - {x: -96, y: -162}
+        - {x: -98, y: -164}
+      - - {x: 73, y: 207}
+        - {x: 73, y: 206}
+        - {x: 76, y: 203}
+        - {x: 79, y: 204}
+        - {x: 79, y: 207}
+        - {x: 77, y: 209}
+        - {x: 75, y: 209}
+    - name: SpiderBoss_IdleAnimation_3
+      rect:
+        serializedVersion: 2
+        x: 3837
+        y: 0
+        width: 1279
+        height: 1333
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -22, y: -231}
+        - {x: -24, y: -226}
+        - {x: 1, y: -133}
+        - {x: 20, y: -238}
+        - {x: 79, y: -251}
+        - {x: 84, y: -237}
+        - {x: 85, y: -228}
+        - {x: 82, y: -218}
+        - {x: 63, y: -210}
+        - {x: 62, y: -214}
+        - {x: 64, y: -217}
+        - {x: 57, y: -218}
+        - {x: 53, y: -93}
+        - {x: 153, y: -188}
+        - {x: 256, y: 50}
+        - {x: 256, y: 76}
+        - {x: 84, y: 151}
+        - {x: 64, y: 143}
+        - {x: 48, y: 120}
+        - {x: 54, y: 135}
+        - {x: 94, y: 168}
+        - {x: 251, y: 150}
+        - {x: 256, y: 150}
+        - {x: 256, y: 204}
+        - {x: 156, y: 264}
+        - {x: -39, y: 264}
+        - {x: -55, y: 234}
+        - {x: -191, y: 201}
+        - {x: -256, y: 163}
+        - {x: -256, y: 153}
+        - {x: -251, y: 153}
+        - {x: -236, y: 161}
+        - {x: -256, y: 65}
+        - {x: -256, y: -76}
+        - {x: -129, y: -211}
+        - {x: -55, y: -263}
+        - {x: 14, y: -263}
+        - {x: 13, y: -255}
+        - {x: -11, y: -220}
+        - {x: -21, y: -228}
+      - - {x: -96, y: -164}
+        - {x: -93, y: -163}
+        - {x: -93, y: -160}
+        - {x: -96, y: -159}
+        - {x: -98, y: -161}
+      - - {x: -130, y: -155}
+        - {x: -127, y: -154}
+        - {x: -127, y: -151}
+        - {x: -130, y: -150}
+        - {x: -132, y: -152}
+      - - {x: 76, y: 209}
+        - {x: 73, y: 208}
+        - {x: 73, y: 204}
+        - {x: 74, y: 203}
+        - {x: 79, y: 203}
+        - {x: 80, y: 205}
+        - {x: 80, y: 208}
+        - {x: 79, y: 209}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

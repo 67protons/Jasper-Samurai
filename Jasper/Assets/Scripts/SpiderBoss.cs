@@ -18,12 +18,7 @@ public class SpiderBoss : Enemy {
         leftSpawn = this.transform.FindChild("LeftSpawn").position;
         rightSpawn = this.transform.FindChild("RightSpawn").position;
         _player = GameObject.Find("Player").GetComponent<Player>();
-    }
-
-    void Start()
-    {
-        
-    }
+    }    
 		
 	void Update () {
         base.Update();

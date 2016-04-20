@@ -198,7 +198,8 @@ public class Player : Entity {
         playerAnimator.SetBool("parrying", parrying);
 
         ///Play proper player animations for ducking, jumping, falling, and landing
-        if (ducking && !playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("duckWalking"))
+        if (ducking && !playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("duckWalking") &&
+            !playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("crouchSlash"))
             playerAnimator.Play("ducking");
         if (!playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("dashing") &&
             !playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("slashing") &&
