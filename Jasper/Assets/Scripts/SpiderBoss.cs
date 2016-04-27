@@ -2,15 +2,22 @@
 using System.Collections;
 
 public class SpiderBoss : Enemy {
+    private int currentPhase = 1;
+    private Vector2 leftSpawn, rightSpawn;
+    private Player _player;
+    /// Phase 1 Variables
     public GameObject projectilePrefab;
     public float projectileDamage = 5f;
     public float projectileForce = 400f;
     float shotFrequency = 1f;
     private float shotCooldown = 0f;
     private bool highShot = false;
-    private int currentPhase = 1;
-    private Vector2 leftSpawn, rightSpawn;
-    private Player _player;
+
+    /// Phase 2 Variables    
+    float smashFrequency = 2f;
+    float smashSpeed = 1f;
+    private float smashCooldown = 0f;
+
 
     void Awake()
     {
@@ -43,10 +50,17 @@ public class SpiderBoss : Enemy {
         {
             ProjectileManager pjScript = other.GetComponent<ProjectileManager>();
             if (pjScript.projectileOwner == "Player")
-            {
-                //this.damageable = false;
+            {                
                 base.MakeInvulnerable(0.1f);
             }
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.collider.CompareTag("Player"))
+        {
+            this.DealDamage(_player, 10f);
         }
     }
 
@@ -58,7 +72,7 @@ public class SpiderBoss : Enemy {
 
     private void PhaseTwo()
     {
-        WebSmash();
+        WebSmash();        
     }
 
     private void Shoot()
@@ -72,7 +86,7 @@ public class SpiderBoss : Enemy {
             }
             else
             {
-                projectile = (GameObject)Instantiate(projectilePrefab, transform.position - new Vector3(0, .5f, 0), Quaternion.identity);
+                projectile = (GameObject)Instantiate(projectilePrefab, transform.position - new Vector3(0, 1f, 0), Quaternion.identity);
             }
             highShot = !highShot;
 
@@ -90,7 +104,16 @@ public class SpiderBoss : Enemy {
 
     private void WebSmash()
     {
-        Debug.Log(_player.transform.position);
+        if (smashCooldown <= 0)
+        {
+            Debug.Log(_player.transform.position);                        
+            this.transform.position = _player.transform.position + (Vector3.up * 5f);
+            smashCooldown = smashFrequency;
+        }
+        else
+        {
+            smashCooldown -= Time.deltaTime;
+        }
     }
 
 
