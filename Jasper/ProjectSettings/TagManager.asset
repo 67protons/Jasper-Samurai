@@ -10,6 +10,8 @@ TagManager:
   - Instakill
   - Ground
   - Breakable
+  - Dashable
+  - Projectile
   layers:
   - Default
   - TransparentFX

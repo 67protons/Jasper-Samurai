@@ -42,7 +42,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 121880}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 92.848, y: 6.615, z: 0}
+  m_LocalPosition: {x: 102.05, y: -100.85906, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 483528}
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flowerType: 1
   remainingCharge: 100
-  rechagePerSec: 5
+  rechagePerSec: 50
 --- !u!212 &21296194
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -37,6 +37,18 @@ public class SpiderBoss : Enemy {
         }
 	}
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Projectile"))
+        {
+            ProjectileManager pjScript = other.GetComponent<ProjectileManager>();
+            if (pjScript.projectileOwner == "Player")
+            {
+                this.damageable = false;
+            }
+        }
+    }
+
     private void PhaseOne()
     {
         Shoot();

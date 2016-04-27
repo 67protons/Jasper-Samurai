@@ -75,13 +75,15 @@ public class Entity : MonoBehaviour {
     }
 
     public void DealDamage(Entity victim, float damage)
-    {        
-        victim.currentHealth -= damage;
+    {
+        if (victim.damageable)
+            victim.currentHealth -= damage;
     }
 
     public void ReceiveDamage(float damage)
     {        
-        this.currentHealth -= damage;
+        if (this.damageable)
+            this.currentHealth -= damage;
     }
 
     public void MakeInvulnerable(float duration)

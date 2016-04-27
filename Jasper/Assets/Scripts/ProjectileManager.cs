@@ -3,11 +3,11 @@ using System.Collections;
 
 public class ProjectileManager : MonoBehaviour {    
     public float lifespan = 2f;
+    public string projectileOwner;
 
     private int xDir = 1;
     private float damage;
-    private float projectileForce;
-    private string projectileOwner;
+    private float projectileForce;    
     //private Entity.Type projectileOwner;
 
     public void Initialize(string ownerTag, Entity.Direction direction, float dmg, float force=100f)
