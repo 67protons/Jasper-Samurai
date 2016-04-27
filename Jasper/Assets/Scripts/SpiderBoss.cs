@@ -44,7 +44,8 @@ public class SpiderBoss : Enemy {
             ProjectileManager pjScript = other.GetComponent<ProjectileManager>();
             if (pjScript.projectileOwner == "Player")
             {
-                this.damageable = false;
+                //this.damageable = false;
+                base.MakeInvulnerable(0.1f);
             }
         }
     }
