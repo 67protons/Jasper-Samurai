@@ -5,6 +5,7 @@ public class SpiderBoss : Enemy {
     private int currentPhase = 1;
     private Vector2 leftSpawn, rightSpawn;
     private Player _player;
+    private Animator _animator;
     /// Phase 1 Variables
     public GameObject projectilePrefab;
     public float projectileDamage = 5f;
@@ -25,6 +26,7 @@ public class SpiderBoss : Enemy {
         leftSpawn = this.transform.FindChild("LeftSpawn").position;
         rightSpawn = this.transform.FindChild("RightSpawn").position;
         _player = GameObject.Find("Player").GetComponent<Player>();
+        _animator = this.GetComponent<Animator>();
     }    
 		
 	void Update () {
@@ -52,6 +54,7 @@ public class SpiderBoss : Enemy {
             if (pjScript.projectileOwner == "Player")
             {                
                 base.MakeInvulnerable(0.1f);
+                _animator.Play("spiderBossParry");
             }
         }
     }
@@ -72,7 +75,16 @@ public class SpiderBoss : Enemy {
 
     private void PhaseTwo()
     {
-        WebSmash();        
+        WebSmash();
+        Debug.Log(this.GetComponent<Rigidbody2D>().velocity.y);
+        if (this.GetComponent<Rigidbody2D>().velocity.y < 0)
+        {
+            _animator.Play("spiderBossSmash");
+        }
+        else
+        {
+            _animator.Play("spiderBossAngryIdle");
+        }
     }
 
     private void Shoot()
@@ -105,8 +117,7 @@ public class SpiderBoss : Enemy {
     private void WebSmash()
     {
         if (smashCooldown <= 0)
-        {
-            Debug.Log(_player.transform.position);                        
+        { 
             this.transform.position = _player.transform.position + (Vector3.up * 5f);
             smashCooldown = smashFrequency;
         }
