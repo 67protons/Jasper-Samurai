@@ -12,6 +12,12 @@ public class PlayerAttacks : MonoBehaviour {
     private Player player;
     private List<GameObject> enemiesInMeleeRange = new List<GameObject>();
     private bool slashing = false;  //For controller support because Right Trigger is an axis
+    private SoundManager _soundManager;
+
+    void Awake()
+    {
+        _soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
+    }
 
     void Start()
     {        
@@ -40,6 +46,7 @@ public class PlayerAttacks : MonoBehaviour {
 
     private IEnumerator Slash()
     {
+        _soundManager.PlayClip(_soundManager.playerMeleeAttack);
         if (player.ducking)
         {
             player.playerAnimator.Play("crouchSlash");
@@ -58,6 +65,7 @@ public class PlayerAttacks : MonoBehaviour {
     {
         if (player.currentSpirit > projectileCost)
         {
+            _soundManager.PlayClip(_soundManager.playerRangeAttack);
             GameObject projectile = (GameObject)Instantiate(projectilePrefab, transform.position, Quaternion.identity);
 
             projectile.GetComponent<ProjectileManager>().Initialize(this.tag, player.currentDirection, projectileDamage, projectileForce);

@@ -15,6 +15,7 @@ public class Player : Entity {
     [HideInInspector]
     public bool smashing;
     private bool movingLeft = false, movingRight = false;
+    private SoundManager _soundManager;
 
     ///Charge Jump Ability
     public bool chargeJumpUnlocked = true;
@@ -61,6 +62,7 @@ public class Player : Entity {
 
         particleSystem = this.transform.FindChild("ParticleSystem").GetComponent<ParticleSystem>();
         particleSystem.enableEmission = false;
+        _soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
     }   
 
     public override void Update()
@@ -69,7 +71,7 @@ public class Player : Entity {
         ManageState();
         
         ///Stationary
-        if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("D-Pad X Axis") == 0)
+        if (Input.GetAxis("Horizontal") == 0 /*&& Input.GetAxis("D-Pad X Axis") == 0*/)
         {
             playerAnimator.SetBool("walking", false);
             movingLeft = false;
@@ -78,27 +80,27 @@ public class Player : Entity {
         else
         {
             ///Move Left
-            if (Input.GetAxis("Horizontal") < 0 || Input.GetAxis("D-Pad X Axis") < 0)
+            if (Input.GetAxis("Horizontal") < 0 /*|| Input.GetAxis("D-Pad X Axis") < 0*/)
             {
                 movingLeft = true;
                 movingRight = false;
             }
 
             ///Move Right
-            if (Input.GetAxis("Horizontal") > 0 || Input.GetAxis("D-Pad X Axis") > 0)
+            if (Input.GetAxis("Horizontal") > 0 /*|| Input.GetAxis("D-Pad X Axis") > 0*/)
             {
                 movingRight = true;
                 movingLeft = false;
             }        
         }        
-        if (!ducking && (Input.GetKeyDown(KeyCode.S) || Input.GetAxis("Vertical") < -0.5 || Input.GetAxis("D-Pad Y Axis") < -0.5))
+        if (!ducking && (Input.GetKeyDown(KeyCode.S) || Input.GetAxis("Vertical") < -0.5 /* || Input.GetAxis("D-Pad Y Axis") < -0.5*/))
         {            
             if (feet.isGrounded)
                 Duck();
             else
                 Smash();
         }
-        if (Input.GetAxis("Vertical") == 0 && Input.GetAxis("D-Pad Y Axis") == 0)
+        if (Input.GetAxis("Vertical") == 0 /*&& Input.GetAxis("D-Pad Y Axis") == 0*/)
         {
             StandUp();
         }
@@ -155,6 +157,10 @@ public class Player : Entity {
             }
             else if (parrying){
                 hitObject.GetComponent<Entity>().EnactParry();
+            }
+            else
+            {
+                _soundManager.PlayClip(_soundManager.playerDamage);
             }
         }
 
@@ -269,6 +275,8 @@ public class Player : Entity {
     {
         if (feet.isGrounded && currentSpirit > 0)
         {
+            if (particleSystem.enableEmission == false)
+                _soundManager.PlayClip(_soundManager.playerChargeJump);
             playerAnimator.SetBool("charging", true);
             charging = true;
             currentSpirit -= chargeCostPerSec * Time.deltaTime;
@@ -283,6 +291,7 @@ public class Player : Entity {
 
     private void ChargeJump()
     {
+        _soundManager.Stop();
         particleSystem.enableEmission = false;
         playerAnimator.SetBool("charging", false);        
         GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, chargeJumpPotential));
@@ -311,6 +320,7 @@ public class Player : Entity {
         {
             currentSpirit -= dashCost;
             playerAnimator.Play("dashing");
+            _soundManager.PlayClip(_soundManager.playerDash);
             StopCoroutine(DashCoroutine());
             StartCoroutine(DashCoroutine());
         }

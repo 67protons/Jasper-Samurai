@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: c0bcb7481642e8243845604ecd1876ba
+timeCreated: 1463607778
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - playerMeleeAttack: {fileID: 8300000, guid: 46ade042814766e44b1277c28c936216, type: 3}
+  - rangeAttack: {instanceID: 0}
+  - playerDamage: {instanceID: 0}
+  - playerChargeJump: {fileID: 8300000, guid: 18bae81c6549aba48b913e74c16536fe, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
