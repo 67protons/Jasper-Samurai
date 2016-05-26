@@ -97,8 +97,10 @@ public class Player : Entity {
         {            
             if (feet.isGrounded)
                 Duck();
-            else
+            else if (!smashing)
+            {
                 Smash();
+            }
         }
         if (Input.GetAxis("Vertical") == 0 /*&& Input.GetAxis("D-Pad Y Axis") == 0*/)
         {
@@ -268,6 +270,7 @@ public class Player : Entity {
         smashing = true;        
         playerAnimator.SetBool("smashing", true);
         playerAnimator.Play("smashing");
+        _soundManager.PlayClip(_soundManager.playerDownSmash);
         this.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -2000));
     }     
 

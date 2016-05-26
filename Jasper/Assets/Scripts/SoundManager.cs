@@ -8,6 +8,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip playerDamage;
     public AudioClip playerChargeJump;
     public AudioClip playerDash;
+    public AudioClip playerDownSmash;
 
     private static AudioSource source;
     private float volLowRange = .5f;
