@@ -27,7 +27,20 @@ public class SpiderBoss : Enemy {
         rightSpawn = this.transform.FindChild("RightSpawn").position;
         _player = GameObject.Find("Player").GetComponent<Player>();
         _animator = this.GetComponent<Animator>();
-    }    
+    }
+
+    public void Initialize()
+    {
+        this.gameObject.SetActive(true);
+        this.currentHealth = 1000;
+        this.currentPhase = 1;
+        this.smashCooldown = 0f;
+    }
+
+    public void Despawn()
+    {
+        this.gameObject.SetActive(false);
+    }
 		
 	void Update () {
         base.Update();
@@ -81,10 +94,10 @@ public class SpiderBoss : Enemy {
         {
             _animator.Play("spiderBossSmash");
         }
-        else
-        {
-            _animator.Play("spiderBossAngryIdle");
-        }
+        //else
+        //{
+        //    _animator.Play("spiderBossSmash");
+        //}
     }
 
     private void Shoot()
@@ -117,7 +130,8 @@ public class SpiderBoss : Enemy {
     private void WebSmash()
     {
         if (smashCooldown <= 0)
-        { 
+        {
+            _animator.Play("spiderBossAngryIdle");
             this.transform.position = _player.transform.position + (Vector3.up * 5f);
             smashCooldown = smashFrequency;
         }

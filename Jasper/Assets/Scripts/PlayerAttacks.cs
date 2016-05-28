@@ -57,7 +57,7 @@ public class PlayerAttacks : MonoBehaviour {
         }        
         yield return new WaitForSeconds(.25f);
         foreach (GameObject enemy in enemiesInMeleeRange){            
-            player.DealDamage(enemy.GetComponent<Entity>(), 100);
+            player.DealDamage(enemy.GetComponent<Entity>(), slashDamage);
         }        
     }
 
