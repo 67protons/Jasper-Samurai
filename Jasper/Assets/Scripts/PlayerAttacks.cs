@@ -8,6 +8,7 @@ public class PlayerAttacks : MonoBehaviour {
     public float projectileDamage = 20f;
     public float projectileForce = 400f;
     public float projectileCost = 5f;
+    private bool canSlash = true;
 
     private Player player;
     private List<GameObject> enemiesInMeleeRange = new List<GameObject>();
@@ -46,19 +47,25 @@ public class PlayerAttacks : MonoBehaviour {
 
     private IEnumerator Slash()
     {
-        _soundManager.PlayClip(_soundManager.playerMeleeAttack);
-        if (player.ducking)
+        if (canSlash)
         {
-            player.playerAnimator.Play("crouchSlash");
+            canSlash = false;
+            _soundManager.PlayClip(_soundManager.playerMeleeAttack);
+            if (player.ducking)
+            {
+                player.playerAnimator.Play("crouchSlash");
+            }
+            else
+            {
+                player.playerAnimator.Play("slashing");
+            }
+            yield return new WaitForSeconds(.25f);
+            foreach (GameObject enemy in enemiesInMeleeRange)
+            {
+                player.DealDamage(enemy.GetComponent<Entity>(), slashDamage);
+            }
+            canSlash = true;
         }
-        else
-        {
-            player.playerAnimator.Play("slashing");
-        }        
-        yield return new WaitForSeconds(.25f);
-        foreach (GameObject enemy in enemiesInMeleeRange){            
-            player.DealDamage(enemy.GetComponent<Entity>(), slashDamage);
-        }        
     }
 
     private void Shoot()
