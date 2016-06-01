@@ -53,7 +53,8 @@ public class PlayerMeleeManager : MonoBehaviour {
         {            
             if (player.dashing)
             {
-                Destroy(hitObject.transform.parent.parent.gameObject);
+                //Destroy(hitObject.transform.parent.parent.gameObject);
+                Destroy(hitObject.gameObject);
             }            
         }
     }
